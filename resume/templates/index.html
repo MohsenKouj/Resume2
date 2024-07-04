@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section id="home-section" class="hero">
+    <div class="home-slider  owl-carousel">
+      <div class="slider-item ">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end"
+            data-scrollax-parent="true">
+            <div class="one-third js-fullheight order-md-last img" style="background-image:url(static/images/bg_1.png);">
+              <div class="overlay"></div>
+            </div>
+            <div class="one-forth d-flex  align-items-center ftco-animate"
+              data-scrollax=" properties: { translateY: '70%' }">
+              <div class="text" style="text-align: right;">
+                <span class="subheading" style="font-size: 26px;">سلام!</span>
+                <h1 class="mb-4 mt-3">من <span>{{name}}</span> هستم</h1>
+                <h2 class="mb-4">{{yearw}} :)</h2>
+                <p><b><a href="#" class="btn btn-primary py-3 px-4"><b>استخدام من</b></a> <a href="#"
+                      class="btn btn-white btn-outline-white py-3 px-4">آثار من</a></b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row d-flex no-gutters slider-text align-items-end justify-content-end"
+            data-scrollax-parent="true">
+            <div class="one-third js-fullheight order-md-last img" style="background-image:url(static/images/bg_2.png);">
+              <div class="overlay"></div>
+            </div>
+            <div class="one-forth d-flex align-items-center ftco-animate"
+              data-scrollax=" properties: { translateY: '70%' }">
+              <div class="text" style="text-align: right;">
+                <span class="subheading" style="font-size: 26px;">سلام!</span>
+                <h1 class="mb-4 mt-3">شعار من <span>{{shear}}</span> است</h1>
+                <p><a href="#" class="btn btn-primary py-3 px-4">استخدام من</a> <a href="#"
+                    class="btn btn-white btn-outline-white py-3 px-4">آثار من</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-md-6 col-lg-5 d-flex">
+          <div class="img-about img d-flex align-items-stretch">
+            <div class="overlay"></div>
+            <div class="img d-flex align-self-stretch align-items-center"
+              style="background-image:url(static/images/bg_1.png);">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-7 pl-lg-5 pb-5" style="direction: rtl;text-align: right;">
+          <div class="row justify-content-start pb-3">
+            <div class="col-md-12 heading-section ftco-animate">
+              <h1 class="big">درباره من</h1>
+              <h2 class="mb-4" style="font-family: btitr;">{{name}}</h2>
+              <p style="font-family: irsans ;font-size: 19px;">
+                {{aboutm}}
+              </p>
+              <ul class="about-info mt-4 px-md-0 px-2">
+                <li class="d-flex"><span style="font-size: 20px;">نام:</span> <span style="font-family: vazir;">{{name}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">تاریخ تولد:</span> <span style="font-family: vazir;">{{bDay}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">محل زندگی:</span> <span
+                    style="font-family: vazir;">{{address}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">کد پستی:</span> <span
+                    style="font-family: vazir;">{{cod_posti}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">ایمیل:</span> <span><a
+                      href="#" class="__cf_email__"
+                      data-cfemail="187b74796a736c70777568587f75797174367b7775">{{email}}</a></span>
+                </li>
+                <li class="d-flex"><span style="font-size: 20px;">شماره تماس: </span> <span
+                    style="font-family: vazir;">{{cNumber}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">تحصیلات: </span> <span
+                    style="font-family: vazir;">{{education}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">زبان‌ها: </span> <span
+                    style="font-family: vazir;">{{langs}}</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="counter-wrap ftco-animate d-flex mt-md-3">
+            <div class="text">
+              <p class="mb-4">
+                <span class="number" data-number="{{fProjects}}" style="font-family: vazir;">0</span>
+                <span>پروژه خاتمه یافته</span>
+              </p>
+              <p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

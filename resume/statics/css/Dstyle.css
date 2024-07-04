@@ -1,0 +1,33 @@
+@font-face {
+    font-family: irsans;
+    src: url(../fonts/A-Iranian-Sans/Iranian\ Sans.ttf);
+}
+
+@font-face {
+    font-family: btitr;
+    src: url(../fonts/B-Titr/B\ Titr\ Bold_0.ttf);
+}
+
+@font-face {
+    font-family: vazir;
+    src: url(../fonts/vazir-font-v16.1.0/Vazir-Medium-FD-WOL.ttf);
+}
+#pic1{
+    background-image: url(../images/project-2.jpg);
+}
+#pic2{
+    background-image: url(../images/project-5.jpg);
+}
+#pic3{
+    background-image: url(../images/project-1.jpg);
+}
+#pic4{
+    background-image: url(../images/project-6.jpg);
+}
+#pic5{
+    background-image: url(../images/project-4.jpg);
+}
+#pic6{
+    background-image: url(../images/project-3.jpg);
+}
+

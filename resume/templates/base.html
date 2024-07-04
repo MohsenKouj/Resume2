@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE 
+html
+>
+<html
+lang = "fa"
+>
+
+<head>
+  <title>mohsen khayyat - web developer and data scientist</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Dstyle.css' %}">
+  <meta name="keywords" content="محسن خیاط,رزومه,طراحی سایت">
+  <meta name="description" content="من محسن خیاط هستم متخصص و طراح سایت با سه سال تجربه‌ کاری در حوزه های مختلف از جمله برنامه‌نویسی ویندوز">
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+
+      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
+        data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav nav ml-auto">
+          <li class="nav-item"><a href="{% url 'house' %}" class="nav-link" style="font-size: 20px;font-weight: bold;"><span>صفحه
+                اصلی</span></a></li>
+          <li class="nav-item"><a href="{% url 'resume' %}" class="nav-link"
+              style="font-size: 18px;"><span>رزومه</span></a></li>
+          <li class="nav-item"><a href="{% url 'skills' %}" class="nav-link"
+              style="font-size: 18px;"><span>مهارت‌ها</span></a></li>
+          <li class="nav-item"><a href="{% url 'projects' %}" class="nav-link"
+              style="font-size: 18px;"><span>پروژه‌ها</span></a></li>
+          
+          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link"
+              style="font-size: 18px;"><span>ارتباط</span></a></li>
+          
+          <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link"
+              style="font-size: 18px;"><span>وبلاگ</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% block content %}
+<!-- content -->
+{% endblock %}
+<footer class="ftco-footer ftco-section" id="con-st" style="text-align: right;direction: rtl;">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2" style="font-family: vazir;">درمورد</h2>
+            <p style="font-family: irsans;">{{downnav}}
+            </p>
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4 ml-md-4">
+            <h2 class="ftco-heading-2" style="margin-right: 50px;font-family: vazir;">پیوند‌ها</h2>
+            <ul class="list-unstyled">
+              <li style="font-family: irsans;"><a href="{% url 'house' %}" ><span class="icon-long-arrow-right mr-2"></span> {{link_1}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'resume' %}"><span class="icon-long-arrow-right mr-2"></span> {{link_2}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{link_3}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'projects' %}"><span class="icon-long-arrow-right mr-2"></span> {{link_4}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'contact' %}"><span class="icon-long-arrow-right mr-2"></span> {{link_5}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2" style="margin-right: 50px;font-family: vazir;">سرویس‌ها</h2>
+            <ul class="list-unstyled">
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_1}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_2}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_3}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_4}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_5}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2" style="font-family: vazir;">سوال داری؟</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text" style="font-family: irsans;">{{address}}</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text" style="font-family: vazir;">{{cNumber}}</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text"><span class="__cf_email__"
+                        data-cfemail="f1989f979eb1889e8483959e9c90989fdf929e9c">{{email}}</span></span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#F96D00" />
+    </svg></div>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/Fadmin.js' %}"></script>
+  <script src="{% static 'js/prim.js' %}"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
+    integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
+    data-cf-beacon='{"rayId":"85d39db2fbbf9b37","b":1,"version":"2024.2.1","token":"cd0b4b3a733644fc843ef0b185f98241"}'
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

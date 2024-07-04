@@ -1,0 +1,107 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+    <!-- headthis -->
+<section class="ftco-section" id="skills-section">
+    <div class="container">
+      <div class="row justify-content-center pb-5">
+        <div class="col-md-12 heading-section text-center ftco-animate">
+          <h1 class="big big-2">مهارت‌ها</h1>
+          <h2 class="mb-4" style="font-family: btitr;">مهارت‌ها</h2>
+          <p style="font-family: irsans ;font-size: 19px;">{{skillsD}}</p>
+        </div>
+      </div>
+      <div class="row" style="direction: ltr;">
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>Python</h3>
+            <div class="progress">
+              <div class="progress-bar color-1" role="progressbar" aria-valuenow="{{python}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:98%">
+                <span style="font-family: vazir;">{{python}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>Pygame</h3>
+            <div class="progress">
+              <div class="progress-bar color-2" role="progressbar" aria-valuenow="{{pygame}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:95%">
+                <span style="font-family: vazir;">{{pygame}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>HTML5</h3>
+            <div class="progress">
+              <div class="progress-bar color-3" role="progressbar" aria-valuenow="{{HTML5}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:98%">
+                <span style="font-family: vazir;">{{HTML5}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>CSS3</h3>
+            <div class="progress">
+              <div class="progress-bar color-4" role="progressbar" aria-valuenow="{{CSS3}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:97%">
+                <span style="font-family: vazir;">{{CSS3}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>MySql</h3>
+            <div class="progress">
+              <div class="progress-bar color-5" role="progressbar" aria-valuenow="{{MySql}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:97%">
+                <span style="font-family: vazir;">{{MySql}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>PyQt5</h3>
+            <div class="progress">
+              <div class="progress-bar color-6" role="progressbar" aria-valuenow="{{PyQt5}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:97%">
+                <span style="font-family: vazir;">{{PyQt5}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>JavaScript</h3>
+            <div class="progress">
+              <div class="progress-bar color-5" role="progressbar" aria-valuenow="{{js}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:94%">
+                <span style="font-family: vazir;">{{js}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate-box">
+          <div class="progress-wrap ftco-animate">
+            <h3>C#</h3>
+            <div class="progress">
+              <div class="progress-bar color-6" role="progressbar" aria-valuenow="{{cs}}" aria-valuemin="0"
+                aria-valuemax="100" style="width:82%">
+                <span style="font-family: vazir;">{{cs}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- footthis -->
+{% endblock %}

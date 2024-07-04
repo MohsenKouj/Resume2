@@ -1,0 +1,73 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+  <!-- headthis -->
+
+  <section class="ftco-section ftco-no-pb" id="resume-section">
+    <div class="container">
+      <div class="row justify-content-center pb-5">
+        <div class="col-md-10 heading-section text-center ftco-animate">
+          <h1 class="big big-2">رزومه</h1>
+          <h2 class="mb-4" style="font-family: btitr;">رزومه</h2>
+          <p style="font-family: irsans ;font-size: 19px;">{{resumeD}}<a href="#spoi">توضیحات تکمیلی را مشاهده میکنید</a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="resume-wrap ftco-animate" style="text-align: right;">
+            <span class="date" style="font-family: vazir;">{{b1}}</span>
+            <h2 style="font-family: vazir;">{{card1_title}}</h2>
+            <span class="position" style="font-family: irsans;">{{card1_resources}}</span>
+            <p class="mt-4" style="font-family: irsans;">{{card1_discriptions}}</p>
+          </div>
+          <div class="resume-wrap ftco-animate" style="text-align: right;">
+            <span class="date" style="font-family: vazir;">{{b2}}</span>
+            <h2 style="font-family: vazir;">{{card2_title}}</h2>
+            <span class="position" style="font-family: irsans;">{{card2_resources}}</span>
+            <p class="mt-4" style="font-family: irsans;">{{card2_discriptions}}</p>
+          </div>
+        </div>
+        <div class="col-md-6" id="spoi">
+          <div class="resume-wrap ftco-animate" style="text-align: right;">
+            <span class="date" style="font-family: vazir;">{{b3}}</span>
+            <h2 style="font-family: vazir;">{{card3_title}}</h2>
+            <span class="position" style="font-family: irsans;">{{card3_resources}}</span>
+            <p class="mt-4" style="font-family: irsans;">{{card3_discriptions}}<br><br></p>
+          </div>
+          <div class="resume-wrap ftco-animate" style="text-align: right;">
+            <span class="date" style="font-family: vazir;">{{b4}}</span>
+            <h2 style="font-family: vazir;">{{card4_title}}</h2>
+            <span class="position" style="font-family: irsans;">{{card4_resources}}</span>
+            <p class="mt-4" style="font-family: irsans;">{{card4_discriptions}}</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="resume-wrap ftco-animate" style="text-align: right;">
+            <span class="date" style="font-family: vazir;">{{b5}}</span>
+            <h2 style="font-family: vazir;">{{card5_title}}</h2>
+            <span class="position" style="font-family: irsans;">{{card5_resources}}</span>
+            <p class="mt-4" style="font-family: irsans;margin-bottom: 44px;">{{card5_discriptions}}</div>
+          
+        </div>
+        <div class="col-md-6">
+          <div class="resume-wrap ftco-animate" style="text-align: right;">
+            <span class="date" style="font-family: vazir;">{{b6}}</span>
+            <h2 style="font-family: vazir;">{{card6_title}}</h2>
+            <span class="position" style="font-family: irsans;">{{card6_resources}}</span>
+            <p class="mt-4" style="font-family: irsans;">{{card6_discriptions}}<br><br></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5" style="width: 90%;padding-left: 185px;">
+      <div class="col-md-6 text-center ftco-animate">
+        <p><a href="#" class="btn btn-primary py-4 px-5" style="width: fit-content;">Download CV</a></p>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- footthis -->
+  {% endblock %}

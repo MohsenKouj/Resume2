@@ -1,0 +1,95 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- headthis -->
+<section class="ftco-section ftco-project" id="projects-section">
+    <div class="container">
+      <div class="row justify-content-center pb-5">
+        <div class="col-md-12 heading-section text-center ftco-animate">
+          <h1 class="big big-2">پروژه‌ها</h1>
+          <h2 class="mb-4" style="font-family: btitr;">پروژه‌ها</h2>
+          <p style="font-family: irsans ;font-size: 19px;"> 
+          {{projectD}}  
+          
+          <ul style="text-align: right;">
+          <span style="font-family: vazir;font-weight: bold;">پرژه‌های من شامل:</span>
+            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro1}}: </span>{{pro1_d}}
+            </li>
+            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro2}}: </span>{{pro2_d}}
+            </li>
+            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro3}}: </span>{{pro3_d}}
+            </li>
+            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro4}}: </span>{{pro4_d}}
+            </li>
+            <li style="margin-right: 30px;font-family: vazir;"> <span style="color:darkseagreen">{{pro5}}: </span>{{pro5_d}}
+            </li>
+            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro6}}: </span>{{pro6_d}}
+            </li>
+          </ul>
+        </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic1">
+            <div class="overlay"></div>
+            <div class="text text-center p-4">
+              <h3><a href="#">{{pro4}}</a></h3>
+              <span>{{card3_title}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic2">
+            <div class="overlay"></div>
+            <div class="text text-center p-4">
+              <h3><a href="#">{{pro1}}</a></h3>
+              <span>{{card3_title}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic3">
+            <div class="overlay"></div>
+            <div class="text text-center p-4">
+              <h3><a href="#">{{pro3}}</a></h3>
+              <span>{{card3_title}}</span>
+            </div>
+          </div>
+          <div class="project img ftco-animate d-flex justify-content-center align-items-center"  id="pic4">
+            <div class="overlay"></div>
+            <div class="text text-center p-4">
+              <h3><a href="#">{{pro5}}</a></h3>
+              <span>{{card2_title}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="project img ftco-animate d-flex justify-content-center align-items-center"  id="pic5">
+                <div class="overlay"></div>
+                <div class="text text-center p-4">
+                  <h3><a href="#">{{pro6}}</a></h3>
+                  <span>{{card3_title}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic6">
+                <div class="overlay"></div>
+                <div class="text text-center p-4">
+                  <h3><a href="#">{{pro2}}</a></h3>
+                  <span>{{card4_title}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- footthis -->
+{% endblock %}
