@@ -33,7 +33,8 @@ class pages(models.Model):
 
 class cards(models.Model):
     uname=models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
-    datetime=models.DateField()
+    title=models.CharField(max_length=255,default='')
+    datetime=models.CharField(max_length=255)
     resources=models.CharField(max_length=255)
     dis=models.TextField(max_length=3000)
 
