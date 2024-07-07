@@ -37,6 +37,8 @@ class cards(models.Model):
     datetime=models.CharField(max_length=255)
     resources=models.CharField(max_length=255)
     dis=models.TextField(max_length=3000)
+    def __str__(self):
+        return self.title
 
 class projects(models.Model):
     uname=models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
