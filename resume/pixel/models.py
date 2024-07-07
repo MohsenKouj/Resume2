@@ -21,6 +21,11 @@ class users(models.Model):
     location=models.TextField(max_length=500)
     age=models.IntegerField()
     birthday=models.DateField(max_length=100)
+    about=models.TextField(default="")
+    education=models.CharField(max_length=255,default="")
+    langs=models.CharField(max_length=255,default="")
+    t_p=models.CharField(max_length=255,default="")
+    cod_posti=models.CharField(max_length=255,default="")
     def __str__(self):
         return f"{self.codeacc} - {self.username}"
 

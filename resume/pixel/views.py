@@ -3,11 +3,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 # Create your views here.
 def house(req):
-    p = users.objects.get(id=1)
-    return render(req,'index.html',{'post':p})
+    el = users.objects.get(id=1)
+    return render(req,'index.html',{'user':el})
 
 def resume(req):
-    return render(req,'pages/resume.html')
+    el = cards.objects.all()
+    return render(req,'pages/resume.html',{'cards':el})
 
 def skills(req):
     return render(req,'pages/skills.html')

@@ -15,8 +15,8 @@
               data-scrollax=" properties: { translateY: '70%' }">
               <div class="text" style="text-align: right;">
                 <span class="subheading" style="font-size: 26px;">سلام!</span>
-                <h1 class="mb-4 mt-3">من <span>{{post.name}}</span> هستم</h1>
-                <h2 class="mb-4">{{yearw}} :)</h2>
+                <h1 class="mb-4 mt-3">من <span>{{user.fname}}</span> هستم</h1>
+                <h2 class="mb-4">با سه سال تجربه کاری :)</h2>
                 <p><b><a href="#" class="btn btn-primary py-3 px-4"><b>استخدام من</b></a> <a href="#"
                       class="btn btn-white btn-outline-white py-3 px-4">آثار من</a></b></p>
               </div>
@@ -36,7 +36,7 @@
               data-scrollax=" properties: { translateY: '70%' }">
               <div class="text" style="text-align: right;">
                 <span class="subheading" style="font-size: 26px;">سلام!</span>
-                <h1 class="mb-4 mt-3">شعار من <span>{{shear}}</span> است</h1>
+                <h1 class="mb-4 mt-3">شعار من <span>دقت، خلاقیت و کار تیمی</span> است </h1>
                 <p><a href="#" class="btn btn-primary py-3 px-4">استخدام من</a> <a href="#"
                     class="btn btn-white btn-outline-white py-3 px-4">آثار من</a></p>
               </div>
@@ -61,34 +61,34 @@
           <div class="row justify-content-start pb-3">
             <div class="col-md-12 heading-section ftco-animate">
               <h1 class="big">درباره من</h1>
-              <h2 class="mb-4" style="font-family: btitr;">{{name}}</h2>
+              <h2 class="mb-4" style="font-family: btitr;">{{user.fname}}</h2>
               <p style="font-family: irsans ;font-size: 19px;">
-                {{aboutm}}
+                {{user.about}}
               </p>
               <ul class="about-info mt-4 px-md-0 px-2">
-                <li class="d-flex"><span style="font-size: 20px;">نام:</span> <span style="font-family: vazir;">{{name}}</span></li>
-                <li class="d-flex"><span style="font-size: 20px;">تاریخ تولد:</span> <span style="font-family: vazir;">{{bDay}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">نام:</span> <span style="font-family: vazir;">{{user.fname}} {{user.lname}}</span></li>
+                <li class="d-flex"><span style="font-size: 20px;">تاریخ تولد:</span> <span style="font-family: vazir;">{{user.birthday}}</span></li>
                 <li class="d-flex"><span style="font-size: 20px;">محل زندگی:</span> <span
-                    style="font-family: vazir;">{{address}}</span></li>
+                    style="font-family: vazir;">{{user.location}}</span></li>
                 <li class="d-flex"><span style="font-size: 20px;">کد پستی:</span> <span
-                    style="font-family: vazir;">{{cod_posti}}</span></li>
+                    style="font-family: vazir;">{{user.cod_posti}}</span></li>
                 <li class="d-flex"><span style="font-size: 20px;">ایمیل:</span> <span><a
                       href="#" class="__cf_email__"
-                      data-cfemail="187b74796a736c70777568587f75797174367b7775">{{email}}</a></span>
+                      data-cfemail="187b74796a736c70777568587f75797174367b7775">{{user.email}}</a></span>
                 </li>
                 <li class="d-flex"><span style="font-size: 20px;">شماره تماس: </span> <span
-                    style="font-family: vazir;">{{cNumber}}</span></li>
+                    style="font-family: vazir;">{{user.tellNumber}}</span></li>
                 <li class="d-flex"><span style="font-size: 20px;">تحصیلات: </span> <span
-                    style="font-family: vazir;">{{education}}</span></li>
+                    style="font-family: vazir;">{{user.education}}</span></li>
                 <li class="d-flex"><span style="font-size: 20px;">زبان‌ها: </span> <span
-                    style="font-family: vazir;">{{langs}}</span></li>
+                    style="font-family: vazir;">{{user.langs}}</span></li>
               </ul>
             </div>
           </div>
           <div class="counter-wrap ftco-animate d-flex mt-md-3">
             <div class="text">
               <p class="mb-4">
-                <span class="number" data-number="{{fProjects}}" style="font-family: vazir;">0</span>
+                <span class="number" data-number="{{user.t_p}}" style="font-family: vazir;">{{user.t_p}}</span>
                 <span>پروژه خاتمه یافته</span>
               </p>
               <p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
