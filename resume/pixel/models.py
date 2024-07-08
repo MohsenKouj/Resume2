@@ -54,6 +54,8 @@ class skills(models.Model):
     uname=models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
     skilNam=models.CharField(max_length=255)
     range=models.IntegerField(default=0)
+    def __str__(self) -> str:
+        return f"{self.skilNam}-{self.range}"
     
 class contact(models.Model):
     uname=models.ForeignKey(users,on_delete=models.SET_NULL,null=True)

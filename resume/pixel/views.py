@@ -10,13 +10,14 @@ def resume(req):
     el = cards.objects.all()
     return render(req,'pages/resume.html',{'cards':el})
 
-def skills(req):
-    return render(req,'pages/skills.html')
+def skills_(req):
+    el = skills.objects.all()
+    return render(req,'pages/skills.html',{'skills':el})
 
-def projects(req):
+def projects_(req):
     return render(req,'pages/projects.html')
 
-def contact(req):
+def contact_(req):
     return render(req,'pages/contact.html')
 
 
