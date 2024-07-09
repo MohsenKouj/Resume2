@@ -49,6 +49,8 @@ class projects(models.Model):
     uname=models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
     proNam=models.CharField(max_length=255)
     dis=models.TextField(max_length=255)
+    def __str__(self) -> str:
+        return self.uname
 
 class skills(models.Model):
     uname=models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
@@ -70,5 +72,9 @@ class categorise(models.Model):
 class posts(models.Model):
     uname = models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
     category = models.ManyToManyField(categorise, blank=True)
-    p_date = models.DateField(auto_now_add=True)
+    title = models.CharField(max_length=255,default='')
+    p_date = models.DateField()
     desc = models.TextField()
+
+    def __str__(self):
+        return f'{self.id}. {self.title}'

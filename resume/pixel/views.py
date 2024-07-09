@@ -15,10 +15,17 @@ def skills_(req):
     return render(req,'pages/skills.html',{'skills':el})
 
 def projects_(req):
-    return render(req,'pages/projects.html')
+    el = projects.objects.all()
+    return render(req,'pages/projects.html',{'projects':el})
 
 def contact_(req):
-    return render(req,'pages/contact.html')
+    el = users.objects.get(id=1)
+    smstr = ""
+    smstr.encode('utf-8')
+    smstr = smstr.replace("","پیام شما ارسال شد")
+    if req.POST:
+        return HttpResponse('<script>alert("{}");location.href="/contact"</script>'.format(smstr))
+    return render(req,'pages/contact.html',{'user':el})
 
 
 def testdb(req):
@@ -28,7 +35,8 @@ def testdb(req):
     return render(req,'testdb.html',dic)
 
 def blog(req):
-    return render(req,'pages/blog.html')
+    el = posts.objects.all()
+    return render(req,'pages/blog.html',{'posts':el})
 def sin(req,number,number2,number3,acc):
     import math
     from .models import Accounts

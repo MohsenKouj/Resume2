@@ -13,42 +13,26 @@
         </div>
       </div>
       <div class="row d-flex">
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry justify-content-end">
+        <div class="col-md-4 d-flex ftco-animate" style="flex-wrap: nowrap;">
+          {% for p in posts %}
+          <div class="blog-entry justify-content-end" style="width: 400px;">
             <a href="single.html" class="block-20" style="background-image: url('../images/image_1.jpg');">
             </a>
             <div class="text mt-3 float-right d-block" style="text-align: right;">
               <div class="d-flex align-items-center mb-3 meta">
                 <p class="mb-0">
-                  <span class="mr-2" style="font-family: vazir ;">28 اسفند 1402</span>
-                  <a href="#" class="mr-2" style="font-family: vazir ;">امین رضایی</a>
+                  <span class="mr-2" style="font-family: vazir ;">{{p.p_date}}</span>
+                  <a href="#" class="mr-2" style="font-family: vazir ;">{{p.uname.fname}} {{p.uname.lname}}</a>
                   <a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
                 </p>
               </div>
-              <h3 class="heading" style="font-family: btitr ;"> ترکیب هوش‌مصنوعی و مکانیک<a href="single.html"></a></h3>
-              <p style="font-family: irsans ;">این نوآوری تلفیقی از علم مکانیک و هوش‌مصنوعی است و میتواند کمک بزرگی به
-                صنعت خودرو سازی بکند و ما تلاش میکنیم تا آنا را به انقلابی در این صنعت بدل کنیم</p>
+              <h3 class="heading" style="font-family: btitr ;">{{p.title}}<a href="single.html"></a></h3>
+              <p style="font-family: irsans ;">
+                {{p.desc|truncatewords:30}}
+              </p>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate" style="text-align: right;">
-          <div class="blog-entry justify-content-end">
-            <a href="single.html" class="block-20" style="background-image: url(static/images/image_2.jpg);">
-            </a>
-            <div class="text mt-3 float-right d-block">
-              <div class="d-flex align-items-center mb-3 meta">
-                <p class="mb-0">
-                  <span class="mr-2" style="font-family: vazir ;">27 اسفند 1402</span>
-                  <a href="#" class="mr-2" style="font-family: vazir ;">محسن خیاط</a>
-                  <a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-                </p>
-              </div>
-              <h3 class="heading"><a href="single.html" style="font-family: btitr ;">مهارت‌های نرم چیست؟ گام به گام با
-                  محسن خیاط</a></h3>
-              <p style="font-family: irsans ;">مهارت‌های نرم مجموعه‌ای از مهارت‌هایی است که هر فرد در حرفه خود باید از
-                آن استفاده کند که شامل کار تیمی، ...</p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry">

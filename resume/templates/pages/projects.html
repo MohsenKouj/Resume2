@@ -15,79 +15,26 @@
           
           <ul style="text-align: right;">
           <span style="font-family: vazir;font-weight: bold;">پرژه‌های من شامل:</span>
-            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro1}}: </span>{{pro1_d}}
+          {% for p in projects %}
+            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{p.proNam}}: </span>{{p.dis}}
             </li>
-            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro2}}: </span>{{pro2_d}}
-            </li>
-            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro3}}: </span>{{pro3_d}}
-            </li>
-            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro4}}: </span>{{pro4_d}}
-            </li>
-            <li style="margin-right: 30px;font-family: vazir;"> <span style="color:darkseagreen">{{pro5}}: </span>{{pro5_d}}
-            </li>
-            <li style="margin-right: 30px;font-family: vazir;"><span style="color:darkseagreen">{{pro6}}: </span>{{pro6_d}}
-            </li>
+          {% endfor %}
           </ul>
         </p>
         </div>
       </div>
       <div class="row">
+        {% for p in projects %}
         <div class="col-md-4">
           <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic1">
             <div class="overlay"></div>
             <div class="text text-center p-4">
-              <h3><a href="#">{{pro4}}</a></h3>
-              <span>{{card3_title}}</span>
+              <h3><a href="#">{{p.proNam}}</a></h3>
+              <span></span>
             </div>
           </div>
         </div>
-        <div class="col-md-8">
-          <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic2">
-            <div class="overlay"></div>
-            <div class="text text-center p-4">
-              <h3><a href="#">{{pro1}}</a></h3>
-              <span>{{card3_title}}</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic3">
-            <div class="overlay"></div>
-            <div class="text text-center p-4">
-              <h3><a href="#">{{pro3}}</a></h3>
-              <span>{{card3_title}}</span>
-            </div>
-          </div>
-          <div class="project img ftco-animate d-flex justify-content-center align-items-center"  id="pic4">
-            <div class="overlay"></div>
-            <div class="text text-center p-4">
-              <h3><a href="#">{{pro5}}</a></h3>
-              <span>{{card2_title}}</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="project img ftco-animate d-flex justify-content-center align-items-center"  id="pic5">
-                <div class="overlay"></div>
-                <div class="text text-center p-4">
-                  <h3><a href="#">{{pro6}}</a></h3>
-                  <span>{{card3_title}}</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="project img ftco-animate d-flex justify-content-center align-items-center" id="pic6">
-                <div class="overlay"></div>
-                <div class="text text-center p-4">
-                  <h3><a href="#">{{pro2}}</a></h3>
-                  <span>{{card4_title}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
