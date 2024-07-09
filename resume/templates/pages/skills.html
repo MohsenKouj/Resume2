@@ -12,13 +12,13 @@
         </div>
       </div>
       <div class="row" style="direction: ltr;">
-        <div class="col-md-6 animate-box">
+        <div class="col-md-6 animate-box" style="display: flex;flex-wrap: wrap;">
           {% for skill in skills %}
-          <div class="progress-wrap ftco-animate">
+          <div class="progress-wrap ftco-animate" style="width:450px">
             <h3>{{skill.skilNam}}</h3>
             <div class="progress">
               <div class="progress-bar color-1" role="progressbar" aria-valuenow="{{skill.skilNum}}" aria-valuemin="0"
-                aria-valuemax="100" style="width: 99%;">
+                aria-valuemax="100" style="width: 90%;">
                 <span style="font-family: vazir;">{{skill.range}}%</span>
               </div>
             </div>
