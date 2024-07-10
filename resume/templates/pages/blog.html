@@ -14,8 +14,10 @@
       </div>
       <div class="conts">
           {% for p in posts %}
-          <div class="blog-entry justify-content-end" style="width: 350px;">
-            <a href="single.html" class="block-20" style="background-image: url('../images/image_1.jpg');">
+          <div class="blog-entry justify-content-end" style="width: 350px;padding: 10px;background-repeat: no-repeat;
+          background-color: hsl(0, 0%, 5%);border-radius: 10px;">
+            <a href="single.html" class="block-20">
+              <img src="{{p.image.url}}" alt="img" style="background-size: contain;margin: 5px;border-radius: 10px;">
             </a>
             <div class="text mt-3 float-right d-block" style="text-align: right;">
               <div class="d-flex align-items-center mb-3 meta">
