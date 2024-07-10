@@ -31,3 +31,9 @@
     background-image: url(../images/project-3.jpg);
 }
 
+.conts{
+    width: 1200px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}

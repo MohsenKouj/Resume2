@@ -12,10 +12,9 @@
           <p style="font-family: irsans ;font-size: 19px;">اخبار و رویدادها را از طریق وبلاگ ما بررسی کنید</p>
         </div>
       </div>
-      <div class="row d-flex">
-        <div class="col-md-4 d-flex ftco-animate" style="flex-wrap: nowrap;display: block;">
+      <div class="conts">
           {% for p in posts %}
-          <div class="blog-entry justify-content-end">
+          <div class="blog-entry justify-content-end" style="width: 350px;">
             <a href="single.html" class="block-20" style="background-image: url('../images/image_1.jpg');">
             </a>
             <div class="text mt-3 float-right d-block" style="text-align: right;">
@@ -33,7 +32,6 @@
             </div>
           </div>
           {% endfor %}
-        </div>
       </div>
     </div>
   </section>

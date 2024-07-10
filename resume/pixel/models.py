@@ -73,6 +73,7 @@ class posts(models.Model):
     uname = models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
     category = models.ManyToManyField(categorise, blank=True)
     title = models.CharField(max_length=255,default='')
+    image = models.ImageField(upload_to='posts-img')
     p_date = models.DateField()
     desc = models.TextField()
 
