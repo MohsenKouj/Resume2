@@ -41,3 +41,10 @@
 .blog-entry:hover{
   background-color: hsla(0, 24%, 42%, 0.6) 
 }
+.hero-wrap{
+    background-image: url(../images/bg_1.jpg);
+}
+.img-fluid{
+    position: relative;
+    left:20px;
+}

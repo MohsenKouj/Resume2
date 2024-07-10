@@ -46,4 +46,6 @@ def sin(req,number,number2,number3,acc):
                ,'obj':element[0]}
     return render(req,'testUD.htm',context)
 
-
+def single(req,post):
+        p = posts.objects.get(id=post)
+        return render(req,'pages/single.html',{'post':p})
