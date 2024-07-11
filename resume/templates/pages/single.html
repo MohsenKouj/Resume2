@@ -1,6 +1,7 @@
 {% extends '../base.html' %}
 {% load static %}
 {% block content %}
+{% load tmps %}
 
 <section class="hero-wrap js-fullheight"  data-stellar-background-ratio="0.5" id="Bismooti">
 <div class="overlay"></div>
@@ -16,10 +17,11 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-8 ftco-animate">
-<h2 class="mb-3" style="direction: rtl;text-align: right;">{{post.title}}</h2><h6 style="text-align: right;">بازدید کننده: {{post.cview}}</h6>
 <img src="{{post.image.url}}" alt class="img-fluid">
 </p>
-<p style="text-align: right;">{{post.desc}}</p>
+<h2 class="mb-3" style="direction: rtl;text-align: right;font-family: btitr;">{{post.title}}</h2><h4 style="text-align: right;font-family: m;">بازدید کننده: {{post.cview}}</h6>
+
+<p style="text-align: right;font-family: irsans;">{{post.desc}}</p>
 <div class="tag-widget post-tag-container mb-5 mt-5">
 <div class="tagcloud">
 </div>
@@ -29,12 +31,12 @@
 <img src="{{post.uname.image.url}}" alt="Image placeholder" class="img-fluid mb-4">
 </div>
 <div class="desc"style="text-align: right;direction: rtl;">
-<h3>{{post.uname.fname}} {{post.uname.lname}}</h3>
-<p>{{post.uname.about}}</p>
+<a href="{% url 'blogsn' p=post.uname.username typ=0 %}"><h3 style="font-family: vazir;">{{post.uname.fname}} {{post.uname.lname}}</h3></a>
+<p style="font-family: irsans">{{post.uname.about}}</p>
 </div>
 </div>
 <div class="pt-5 mt-5">
-<h3 class="mb-5" style="text-align: right;">{{lengthc}} نظر</h3>
+<h3 class="mb-5" style="text-align: right;font-family: m;">{{lengthc}} نظر</h3>
 <ul class="comment-list">
 {% for c in comments %}
 <li class="comment">
@@ -54,15 +56,19 @@
 
 
 <div class="comment-form-wrap pt-5">
-<h3 class="mb-5" style="text-align: right;">نظر بدهید</h3>
-<form action="#" class="p-5 bg-dark">
-<div class="form-group">
+<h3 class="mb-5" style="text-align: right;font-family: vazir;">نظر بدهید</h3>
+<form action="#" class="p-5 bg-dark" style="text-align: right;">
+<div class="form-group" >
 <label for="name">نام *</label>
 <input type="text" class="form-control" id="name">
 </div>
 <div class="form-group">
 <label for="email">ایمیل *</label>
 <input type="email" class="form-control" id="email">
+</div>
+<div class="form-group">
+    <label for="email">گذرواژه*</label>
+    <input type="password" class="form-control" id="email">
 </div>
 <div class="form-group">
 <label for="website">وبسایت</label>
@@ -73,7 +79,7 @@
 <textarea name id="message" cols="30" rows="10" class="form-control"></textarea>
 </div>
 <div class="form-group">
-<input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+<input type="submit" value="ارسال" class="btn py-3 px-4 btn-primary">
 </div>
 </form>
 </div>
@@ -89,26 +95,17 @@
 </form>
 </div>
 <div class="sidebar-box ftco-animate" style="text-align: right;">
-<h3 class="heading-sidebar" >دسته‌بندی ها</h3>
+<h3 class="heading-sidebar" style="font-size: 20px;font-family: btitr;">دسته‌بندی ها</h3>
 <ul class="categories">
-<li><a href="#">دسته بندی اول <span>(12)</span></a></li>
+{% for cs in post.category.all %}
+<li><a href="{% url 'blogs' name=cs.name typ=1 %}" style="font-size: 19px;font-family: vazir;">{{cs.name}}<span>(دیدن)</span></a></li>
+{% endfor %}
 </ul>
 </div>
 <div class="sidebar-box ftco-animate"style="text-align: right;">
 <h3 class="heading-sidebar">پست های اخیر</h3>
-{% for r in recently %}
-<div class="block-21 mb-4 d-flex"style="text-align: right;">
-<a class="blog-img mr-4" href="{% url 'single' post=r.id %}"><img src="{{r.image.url}}" alt="img" style="width: inherit;height: inherit;display: inline-block;position: relative;left:9px;"></a>
-<div class="text">
-<h3 class="heading"><a href="{% url 'single' post=r.id %}">{{r.title}}</a></h3>
-<div class="meta">
-<div><a href="{% url 'single' post=r.id %}"><span class="icon-calendar"></span>{{r.p_date}}</a></div>
-<div><a href="{% url 'single' post=r.id %}"><span class="icon-person"></span>{{r.uname.fname}} {{r.uname.lname}}</a></div>
-<div><a href="{% url 'single' post=r.id %}"><span class="icon-chat"></span>بازدید کننده:{{r.cview}}</a></div>
-</div>
-</div>
-</div>
-{% endfor %}
+
+{% latest_post %}
 
 </div>
 <div class="sidebar-box ftco-animate">

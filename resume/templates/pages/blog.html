@@ -12,6 +12,15 @@
           <p style="font-family: irsans ;font-size: 19px;">اخبار و رویدادها را از طریق وبلاگ ما بررسی کنید</p>
         </div>
       </div>
+      {% if name %}
+      {% if typ %}
+      <h4 style="text-align: right;font-family: vazir;">ترتیب بر اساس دسته‌‌بندی "{{name}}"</h3>
+      {% else %}
+      <h4 style="text-align: right;font-family: vazir;">ترتیب پست ها بر اساس نویسنده "{{name}}"</h3>
+      {% endif %}
+      {% else %}
+      <h4 style="text-align: right;font-family: vazir;">تمام پست ها</h3>
+      {% endif %}
       <div class="conts">
           {% for p in posts %}
           <div class="blog-entry justify-content-end" style="width: 350px;padding: 10px;background-repeat: no-repeat;

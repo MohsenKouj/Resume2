@@ -12,6 +12,10 @@
     font-family: vazir;
     src: url(../fonts/vazir-font-v16.1.0/Vazir-Medium-FD-WOL.ttf);
 }
+@font-face {
+    font-family: m;
+    src: url(../fonts/Mj_Mandana/Mj_Mandana_0.TTF) format('truetype');
+}
 #pic1{
     background-image: url(../images/project-2.jpg);
 }
@@ -47,4 +51,13 @@
 .img-fluid{
     position: relative;
     left:20px;
+}
+.bread{
+    font-family: m;
+}
+a{
+    color:azure;
+}
+a:disabled{
+    color:azure;
 }

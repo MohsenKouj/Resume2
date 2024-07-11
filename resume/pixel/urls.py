@@ -9,6 +9,8 @@ urlpatterns = [
     path('projects/',projects_,name='projects'),
     path('contact/',contact_,name='contact'),
     path('blog/',blog,name='blog'),
-    path('single/<int:post>',single,name='single')
+    path('single/<int:post>',single,name='single'),
+    path('blog/sort-by-category<str:name><int:typ>',blog,name='blogs'),
+    path('blog/sort-by-author<str:p><int:typ>',blog,name='blogsn')
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

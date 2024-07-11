@@ -36,11 +36,24 @@ def testdb(req):
     dic = {'accounts':acc}
     return render(req,'testdb.html',dic)
 
-def blog(req):
+def blog(req,name=None,p=None,typ=0):
     now = timezone.datetime.now()
     el = posts.objects.filter(status=True)
-    els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
-    return render(req,'pages/blog.html',{'posts':els})
+    if typ:
+        if name:
+            el = el.filter(category__name=name)
+            els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
+        else:
+            els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
+    else:
+        if p:
+            name = users.objects.get(username=p)
+            name = f'{name.fname} {name.lname}'
+            el = el.filter(uname__username=p)
+            els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
+        else:
+            els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
+    return render(req,'pages/blog.html',{'posts':els,'name':name,'typ':typ})
 
 def sin(req,number,number2,number3,acc):
     import math
@@ -53,10 +66,10 @@ def sin(req,number,number2,number3,acc):
 
 def single(req,post):
         p = posts.objects.get(id=post)
-        if not p.status:
+        now = timezone.datetime.now()
+        if not p.status or p.p_date.timestamp() > now.timestamp():
             return HttpResponseNotFound(req)
         p.cview += 1
         p.save()
-        ps = posts.objects.all().order_by('p_date')[:6]
         com = comments.objects.filter(post__id=p.id)
-        return render(req,'pages/single.html',{'post':p,'recently':ps,'comments':com,'lengthc':len(com)})
+        return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com)})
