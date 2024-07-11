@@ -93,17 +93,19 @@
 </div>
 <div class="sidebar-box ftco-animate"style="text-align: right;">
 <h3 class="heading-sidebar">پست های اخیر</h3>
+{% for r in recently %}
 <div class="block-21 mb-4 d-flex"style="text-align: right;">
-<a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+<a class="blog-img mr-4" href="{% url 'single' post=r.id %}"><img src="{{r.image.url}}" alt="img" style="width: inherit;height: inherit;display: inline-block;position: relative;left:9px;"></a>
 <div class="text">
-<h3 class="heading"><a href="#">عنوان پست</a></h3>
+<h3 class="heading"><a href="{% url 'single' post=r.id %}">{{r.title}}</a></h3>
 <div class="meta">
-<div><a href="#"><span class="icon-calendar"></span> March 12, 2019</a></div>
-<div><a href="#"><span class="icon-person"></span> ناشر پست</a></div>
-<div><a href="#"><span class="icon-chat"></span> 19</a></div>
+<div><a href="{% url 'single' post=r.id %}"><span class="icon-calendar"></span>{{r.p_date}}</a></div>
+<div><a href="{% url 'single' post=r.id %}"><span class="icon-person"></span>{{r.uname.fname}} {{r.uname.lname}}</a></div>
+<div><a href="{% url 'single' post=r.id %}"><span class="icon-chat"></span></a></div>
 </div>
 </div>
 </div>
+{% endfor %}
 
 </div>
 <div class="sidebar-box ftco-animate">

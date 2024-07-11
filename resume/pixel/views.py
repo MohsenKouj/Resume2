@@ -48,4 +48,5 @@ def sin(req,number,number2,number3,acc):
 
 def single(req,post):
         p = posts.objects.get(id=post)
-        return render(req,'pages/single.html',{'post':p})
+        ps = posts.objects.all().order_by('p_date')[:6]
+        return render(req,'pages/single.html',{'post':p,'recently':ps})
