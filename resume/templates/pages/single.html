@@ -16,7 +16,7 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-8 ftco-animate">
-<h2 class="mb-3" style="direction: rtl;text-align: right;">{{post.title}}</h2>
+<h2 class="mb-3" style="direction: rtl;text-align: right;">{{post.title}}</h2><h6 style="text-align: right;">بازدید کننده: {{post.cview}}</h6>
 <img src="{{post.image.url}}" alt class="img-fluid">
 </p>
 <p style="text-align: right;">{{post.desc}}</p>
@@ -26,7 +26,7 @@
 </div>
 <div class="about-author d-flex p-4 bg-dark">
 <div class="bio mr-5" style="text-align: right;direction: rtl;">
-<img src="{{post.image.url}}" alt="Image placeholder" class="img-fluid mb-4">
+<img src="{{post.uname.image.url}}" alt="Image placeholder" class="img-fluid mb-4">
 </div>
 <div class="desc"style="text-align: right;direction: rtl;">
 <h3>{{post.uname.fname}} {{post.uname.lname}}</h3>
@@ -34,24 +34,27 @@
 </div>
 </div>
 <div class="pt-5 mt-5">
-<h3 class="mb-5">1 نظر</h3>
+<h3 class="mb-5" style="text-align: right;">{{lengthc}} نظر</h3>
 <ul class="comment-list">
+{% for c in comments %}
 <li class="comment">
 <div class="vcard bio" style="text-align: right;direction: rtl;">
-<img src="images/person_1.jpg" alt="Image placeholder" style="text-align: right;direction: rtl;">
+<img src="{{c.uname.image.url}}" alt="Image placeholder" style="text-align: right;direction: rtl;">
 </div>
+
 <div class="comment-body"style="text-align: right;direction: rtl;">
-<h3>نام کاربر</h3>
-<div class="meta">June 20, 2019/div>
-<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+<h3>{{c.uname.username}}</h3>
+<div class="meta">{{c.c_date}}
+<p>{{c.subject}}</p>
 <p><a href="#" class="reply">پاسخ</a></p>
 </div>
 </li>
+{% endfor %}
 <li class="comment">
 
 
 <div class="comment-form-wrap pt-5">
-<h3 class="mb-5">نظر بدهید</h3>
+<h3 class="mb-5" style="text-align: right;">نظر بدهید</h3>
 <form action="#" class="p-5 bg-dark">
 <div class="form-group">
 <label for="name">نام *</label>
@@ -101,7 +104,7 @@
 <div class="meta">
 <div><a href="{% url 'single' post=r.id %}"><span class="icon-calendar"></span>{{r.p_date}}</a></div>
 <div><a href="{% url 'single' post=r.id %}"><span class="icon-person"></span>{{r.uname.fname}} {{r.uname.lname}}</a></div>
-<div><a href="{% url 'single' post=r.id %}"><span class="icon-chat"></span></a></div>
+<div><a href="{% url 'single' post=r.id %}"><span class="icon-chat"></span>بازدید کننده:{{r.cview}}</a></div>
 </div>
 </div>
 </div>

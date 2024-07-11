@@ -12,6 +12,7 @@ class Accounts(models.Model):
     
 class users(models.Model):
     username=models.CharField(max_length=255)
+    image=models.ImageField(max_length=255,upload_to="posts-img",default='posts-img/upic.png')
     password=models.CharField(max_length=255,default=123)
     codeacc=models.ForeignKey(Accounts,on_delete=models.CASCADE)
     fname=models.CharField(max_length=255)
@@ -68,14 +69,27 @@ class contact(models.Model):
 class categorise(models.Model):
     name = models.CharField(max_length=255)
     
-    
+
+
 class posts(models.Model):
     uname = models.ForeignKey(users,on_delete=models.SET_NULL,null=True)
     category = models.ManyToManyField(categorise, blank=True)
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='posts-img/',default='posts-img/project-6.png')
-    p_date = models.DateField()
+    p_date = models.DateTimeField()
+    status = models.BooleanField(default=True)
+    cview = models.IntegerField(default=0)
     desc = models.TextField()
-
+    
     def __str__(self):
         return f'{self.id}. {self.title}'
+
+class comments(models.Model):
+    uname = models.ForeignKey(users, on_delete=models.SET_NULL,null=True)
+    title = models.CharField(max_length=255)
+    c_date = models.DateTimeField()
+    subject = models.TextField()
+    post = models.ForeignKey(posts, on_delete=models.SET_NULL,null=True)
+    
+    def __str__(self):
+        return self.title

@@ -10,6 +10,7 @@ register = admin.site.register(skills)
 register = admin.site.register(categorise)
 register = admin.site.register(contact)
 register = admin.site.register(Accounts)
+register = admin.site.register(comments)
 
 
 

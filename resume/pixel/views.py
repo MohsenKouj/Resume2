@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+
 from .models import *
 # Create your views here.
 def house(req):
@@ -35,8 +37,11 @@ def testdb(req):
     return render(req,'testdb.html',dic)
 
 def blog(req):
-    el = posts.objects.all()
-    return render(req,'pages/blog.html',{'posts':el})
+    now = timezone.datetime.now()
+    el = posts.objects.filter(status=True)
+    els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
+    return render(req,'pages/blog.html',{'posts':els})
+
 def sin(req,number,number2,number3,acc):
     import math
     from .models import Accounts
@@ -48,5 +53,10 @@ def sin(req,number,number2,number3,acc):
 
 def single(req,post):
         p = posts.objects.get(id=post)
+        if not p.status:
+            return HttpResponseNotFound(req)
+        p.cview += 1
+        p.save()
         ps = posts.objects.all().order_by('p_date')[:6]
-        return render(req,'pages/single.html',{'post':p,'recently':ps})
+        com = comments.objects.filter(post__id=p.id)
+        return render(req,'pages/single.html',{'post':p,'recently':ps,'comments':com,'lengthc':len(com)})

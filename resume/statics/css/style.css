@@ -2758,11 +2758,10 @@ textarea.form-control {
     clear: both;
     list-style: none; }
     .comment-list li .vcard {
-      width: 80px;
       float:right;
       position: relative;
       left:10px;
-      border-radius: 10px;
+      border-radius: 100%;
       border-width: 3px;
       border-style: ridge;
       }

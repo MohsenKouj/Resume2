@@ -23,11 +23,11 @@
               <div class="d-flex align-items-center mb-3 meta">
                 <p class="mb-0">
                   <span class="mr-2" style="font-family: vazir ;">{{p.p_date}}</span>
-                  <a href="#" class="mr-2" style="font-family: vazir ;">{{p.uname.fname}} {{p.uname.lname}}</a>
-                  <a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+                  <a href="{% url 'single' post=p.id %}" class="mr-2" style="font-family: vazir ;">{{p.uname.fname}} {{p.uname.lname}}</a>
+                  <a href="{% url 'single' post=p.id %}" class="meta-chat"><span class="icon-chat"></span> بازدید کننده: {{p.cview}}</a>
                 </p>
               </div>
-              <h3 class="heading" style="font-family: btitr ;">{{p.title}}<a href="single.html"></a></h3>
+              <h3 class="heading" style="font-family: btitr ;"><a href="{% url 'single' post=p.id %}">{{p.title}}</a></h3>
               <p style="font-family: irsans ;">
                 {{p.desc|truncatewords:30}}
               </p>
