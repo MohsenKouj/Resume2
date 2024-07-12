@@ -1,7 +1,7 @@
 from django.http import HttpResponse,HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-
+from .forms import comment
 from .models import *
 # Create your views here.
 def house(req):
@@ -72,4 +72,32 @@ def single(req,post):
         p.cview += 1
         p.save()
         com = comments.objects.filter(post__id=p.id)
-        return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com)})
+        Comment = comment()
+        return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment})
+    
+def sendComment(req,pos):
+    if req.POST:
+        comment_ = comment(req.POST)
+        print(comment_)
+        if comment_.is_valid:
+            user = users.objects.get(username=comment_.cleaned_data['username'])
+            if user.password == comment_.cleaned_data['password']:
+                if user.email == comment_.cleaned_data['email']:
+                    field = '''
+                    <h1 style='color:green'>SEND MESSAGE IS SUCCESSFULLY</h1>
+                    username: {}
+                    email: {}
+                    password: {}
+                    fname: {}
+                    lname: {}
+                    age: {}
+                    '''.format(user.username,user.email,user.password,user.fname,user.lname,user.age)
+                    return HttpResponse(field)
+                else:
+                    return HttpResponse("<h1 style='color:red'>SEND MESSAGE IS FAILE</h1>")
+            else:
+                return HttpResponse("<h1 style='color:red'>SEND MESSAGE IS FAILE</h1>")
+
+
+    else:
+        return HttpResponse("<h1 style='color:red'>SEND MESSAGE IS FAILE</h1>")
