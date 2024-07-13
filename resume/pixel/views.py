@@ -76,27 +76,43 @@ def single(req,post):
         return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment})
     
 def sendComment(req,pos):
+    now = timezone.datetime.now()
     if req.POST:
         comment_ = comment(req.POST)
         print(comment_)
         if comment_.is_valid:
-            user = users.objects.get(username=comment_.cleaned_data['username'])
+            try:
+                user = users.objects.get(username=comment_.cleaned_data['username'])
+            except users.DoesNotExist:
+                return HttpResponse("<h1 style='color:red'>USER DOES NOT EXIST</h1>")
             if user.password == comment_.cleaned_data['password']:
                 if user.email == comment_.cleaned_data['email']:
-                    field = '''
+                    comments.objects.create(
+                        uname=user,
+                        title=comment_.cleaned_data['title'],
+                        c_date=timezone.datetime.now(),
+                        subject=comment_.cleaned_data['msg'],
+                        post=posts.objects.get(id=pos)
+                    )
+                    field = f'''
                     <h1 style='color:green'>SEND MESSAGE IS SUCCESSFULLY</h1>
-                    username: {}
-                    email: {}
-                    password: {}
-                    fname: {}
-                    lname: {}
-                    age: {}
-                    '''.format(user.username,user.email,user.password,user.fname,user.lname,user.age)
+                    <script>setTimeout(()=>
+                        {f"""{
+                        ''.join([
+                        
+                        "{",
+                        "location.href = '/single/",str(pos),"'",
+                        '}'])
+                        
+                        }"""
+                        },1000)
+                    </script>
+                    '''
                     return HttpResponse(field)
                 else:
-                    return HttpResponse("<h1 style='color:red'>SEND MESSAGE IS FAILE</h1>")
+                    return HttpResponse("<h1 style='color:red'>EMAIL THERE IS NOT</h1>")
             else:
-                return HttpResponse("<h1 style='color:red'>SEND MESSAGE IS FAILE</h1>")
+                return HttpResponse("<h1 style='color:red'>PASSWORD IS NOT CURRECT</h1>")
 
 
     else:
