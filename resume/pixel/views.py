@@ -26,7 +26,7 @@ def contact_(req):
     smstr.encode('utf-8')
     smstr = smstr.replace("","پیام شما ارسال شد")
     if req.POST:
-        return HttpResponse('<script>alert("{}");location.href="/contact"</script>'.format(smstr))
+        return HttpResponse('<script>alert("{}";location.href="/contact"</script>'.format(smstr))
     return render(req,'pages/contact.html',{'user':el})
 
 
@@ -65,55 +65,45 @@ def sin(req,number,number2,number3,acc):
     return render(req,'testUD.htm',context)
 
 def single(req,post):
-        p = posts.objects.get(id=post)
-        now = timezone.datetime.now()
-        if not p.status or p.p_date.timestamp() > now.timestamp():
-            return HttpResponseNotFound(req)
-        p.cview += 1
-        p.save()
-        com = comments.objects.filter(post__id=p.id)
-        Comment = comment()
-        return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment})
-    
-def sendComment(req,pos):
+    p = posts.objects.get(id=post)
     now = timezone.datetime.now()
+    if not p.status or p.p_date.timestamp() > now.timestamp():
+        return HttpResponseNotFound(req)
+    p.cview += 1
+    p.save()
+    com = comments.objects.filter(post__id=p.id)
+    Comment = comment()
+    problems = ""
     if req.POST:
         comment_ = comment(req.POST)
         print(comment_)
         if comment_.is_valid:
+            exist = True
             try:
                 user = users.objects.get(username=comment_.cleaned_data['username'])
             except users.DoesNotExist:
-                return HttpResponse("<h1 style='color:red'>USER DOES NOT EXIST</h1>")
-            if user.password == comment_.cleaned_data['password']:
+                problems = [0,"❗ ERROR: USER DOES NOT EXIST"]
+                exist = False
+            if exist:
+             if user.password == comment_.cleaned_data['password']:
                 if user.email == comment_.cleaned_data['email']:
                     comments.objects.create(
-                        uname=user,
+                        uname=None,
                         title=comment_.cleaned_data['title'],
                         c_date=timezone.datetime.now(),
                         subject=comment_.cleaned_data['msg'],
-                        post=posts.objects.get(id=pos)
+                        post=posts.objects.get(id=post)
+                        
                     )
-                    field = f'''
-                    <h1 style='color:green'>SEND MESSAGE IS SUCCESSFULLY</h1>
-                    <script>setTimeout(()=>
-                        {f"""{
-                        ''.join([
-                        
-                        "{",
-                        "location.href = '/single/",str(pos),"'",
-                        '}'])
-                        
-                        }"""
-                        },1000)
-                    </script>
-                    '''
-                    return HttpResponse(field)
+                    problems = [1,"✔ SUBMITED"]
+                    req.POST = ""
                 else:
-                    return HttpResponse("<h1 style='color:red'>EMAIL THERE IS NOT</h1>")
-            else:
-                return HttpResponse("<h1 style='color:red'>PASSWORD IS NOT CURRECT</h1>")
+                    problems = [0,"❗ ERROR: INVALID EMAIL"]
+             else:
+                problems = [0,"❗ ERROR: INVALID PASSWORD"]
 
+        else:
+            problems = [0,"❗ ERROR: INVALID POST REQUEST"]
+    
+    return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment,'msg':problems})
 
-    else:
-        return HttpResponse("<h1 style='color:red'>SEND MESSAGE IS FAILE</h1>")

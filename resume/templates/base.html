@@ -55,6 +55,23 @@ lang = "fa"
       </div>
     </div>
   </nav>
+  {% if msg %}
+{% if msg.0 %}
+<div id="vin" style="display: block;width: 400px;height: 50px;border-radius: 13px;border-width: 3px;border-style: ridge;border-color: green;background-color: hsla(121, 100%, 68%, 0.785);color: rgb(0, 57, 0);position: sticky;left: 510px;top:80px;text-align: center;align-content: center;font-weight: bold;z-index: 99999;">{{msg.1}}</div>
+<script>
+    setTimeout(()=>{
+        document.getElementById("vin").style.display = 'none';
+    },3000)
+</script>
+{% else %}
+<div id="vin" style="display: block;width: 400px;height: 50px;border-radius: 13px;border-width: 3px;border-style: ridge;border-color: red;background-color: hsla(0, 100%, 68%, 0.785);color: rgb(57, 0, 0);position: sticky;left: 510px;top:80px;text-align: center;align-content: center;font-weight: bold;z-index: 99999;">{{msg.1}}</div>
+<script>
+    setTimeout(()=>{
+        document.getElementById("vin").style.display = 'none';
+    },3000)
+</script>
+{% endif %}
+{% endif %}
 {% block content %}
 <!-- content -->
 {% endblock %}

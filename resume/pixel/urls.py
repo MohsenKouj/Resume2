@@ -12,6 +12,6 @@ urlpatterns = [
     path('single/<int:post>',single,name='single'),
     path('blog/sort-by-category<str:name><int:typ>',blog,name='blogs'),
     path('blog/sort-by-author<str:p><int:typ>',blog,name='blogsn'),
-    path('sendComment/<int:pos>',sendComment,name='sendComment'),
+    path('sendComment/<int:post>',single,name='sendComment'),
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

@@ -5,4 +5,4 @@ class comment(forms.Form):
     email = forms.EmailField(max_length=255)
     password = forms.CharField(max_length=255,widget=forms.PasswordInput)
     title = forms.CharField(max_length=255)
-    msg = forms.CharField(widget=forms.Textarea)
+    msg = forms.CharField(widget=forms.Textarea,required=False)
