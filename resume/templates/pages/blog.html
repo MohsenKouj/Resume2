@@ -1,6 +1,7 @@
 
 {% extends '../base.html' %}
 {% load static %}
+{% load humanize %}
 {% block content %}
     <!-- headthis -->
 <section class="ftco-section" id="blog-section">
@@ -31,9 +32,9 @@
             <div class="text mt-3 float-right d-block" style="text-align: right;">
               <div class="d-flex align-items-center mb-3 meta">
                 <p class="mb-0">
-                  <span class="mr-2" style="font-family: vazir ;">{{p.p_date}}</span>
+                  <span class="mr-2" style="font-family: vazir ;">{{p.p_date|naturalday}}</span>
                   <a href="{% url 'single' post=p.id %}" class="mr-2" style="font-family: vazir ;">{{p.uname.fname}} {{p.uname.lname}}</a>
-                  <a href="{% url 'single' post=p.id %}" class="meta-chat"><span class="icon-chat"></span> بازدید کننده: {{p.cview}}</a>
+                  <a href="{% url 'single' post=p.id %}" class="meta-chat"><span class="icon-chat"></span> بازدید کننده: {{p.cview|intword}}</a>
                 </p>
               </div>
               <h3 class="heading" style="font-family: btitr ;"><a href="{% url 'single' post=p.id %}">{{p.title}}</a></h3>

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load tmps %}
+{% load humanize %}
 <section class="hero-wrap js-fullheight"  data-stellar-background-ratio="0.5" id="Bismooti">
 <div class="overlay"></div>
 <div class="container">
@@ -18,7 +19,7 @@
 <div class="col-lg-8 ftco-animate">
 <img src="{{post.image.url}}" alt class="img-fluid">
 </p>
-<h2 class="mb-3" style="direction: rtl;text-align: right;font-family: btitr;">{{post.title}}</h2><h4 style="text-align: right;font-family: m;">بازدید کننده: {{post.cview}}</h6>
+<h2 class="mb-3" style="direction: rtl;text-align: right;font-family: btitr;">{{post.title}}</h2><h4 style="text-align: right;font-family: m;">بازدید کننده: {{post.cview|intword}}</h6>
 
 <p style="text-align: right;font-family: irsans;">{{post.desc}}</p>
 <div class="tag-widget post-tag-container mb-5 mt-5">
@@ -35,7 +36,7 @@
 </div>
 </div>
 <div class="pt-5 mt-5">
-<h3 class="mb-5" style="text-align: right;font-family: m;">{{lengthc}} نظر</h3>
+<h3 class="mb-5" style="text-align: right;font-family: m;">{{lengthc|intword}} نظر</h3>
 <ul class="comment-list">
 {% for c in comments %}
 <li class="comment">
@@ -44,7 +45,7 @@
 </div>
 <div class="comment-body"style="text-align: right;direction: rtl;">
 {% if c.uname %}<h3>{{c.uname.username}}</h3>{% else %}<h3>ناشناس</h3>{% endif %}
-<div class="meta">{{c.c_date}}
+<div class="meta">{{c.c_date|naturaltime}}
 <p>{{c.subject}}</p>
 <p><a href="#" class="reply">پاسخ</a></p>
 </div>

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pixel.apps.PixelConfig',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
