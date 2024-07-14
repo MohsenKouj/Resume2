@@ -79,14 +79,7 @@ def single(req,post):
         print(comment_)
         if comment_.is_valid:
             exist = True
-            try:
-                user = users.objects.get(username=comment_.cleaned_data['username'])
-            except users.DoesNotExist:
-                problems = [0,"❗ ERROR: USER DOES NOT EXIST"]
-                exist = False
             if exist:
-             if user.password == comment_.cleaned_data['password']:
-                if user.email == comment_.cleaned_data['email']:
                     comments.objects.create(
                         uname=None,
                         title=comment_.cleaned_data['title'],
@@ -97,13 +90,10 @@ def single(req,post):
                     )
                     problems = [1,"✔ SUBMITED"]
                     req.POST = ""
-                else:
-                    problems = [0,"❗ ERROR: INVALID EMAIL"]
-             else:
-                problems = [0,"❗ ERROR: INVALID PASSWORD"]
-
+            else:
+                problems = [0,"❗ ERROR: THE DATABASE DOES NOT EXIST"]
         else:
-            problems = [0,"❗ ERROR: INVALID POST REQUEST"]
+            problems = [0,"❗ ERROR: INVALID FORM'S DATA"]
     
     return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment,'msg':problems})
 
