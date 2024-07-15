@@ -1,7 +1,7 @@
 from django.http import HttpResponse,HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .forms import comment
+from pixel import forms
 from .models import *
 # Create your views here.
 def house(req):
@@ -26,7 +26,15 @@ def contact_(req):
     smstr.encode('utf-8')
     smstr = smstr.replace("","پیام شما ارسال شد")
     if req.POST:
-        return HttpResponse('<script>alert("{}";location.href="/contact"</script>'.format(smstr))
+        form = forms.contact(req.POST)
+        if form.is_valid():
+            contact.objects.create(
+                uname = None,
+                email = form.cleaned_data['email'],
+                title = form.cleaned_data['title'],
+                mess=form.cleaned_data['subject']
+            )
+            
     return render(req,'pages/contact.html',{'user':el})
 
 
@@ -72,10 +80,10 @@ def single(req,post):
     p.cview += 1
     p.save()
     com = comments.objects.filter(post__id=p.id)
-    Comment = comment()
+    Comment = forms.comment()
     problems = ""
     if req.POST:
-        comment_ = comment(req.POST)
+        comment_ = forms.comment(req.POST)
         print(comment_)
         if comment_.is_valid:
             exist = True
