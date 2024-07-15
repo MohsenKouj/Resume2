@@ -61,3 +61,40 @@ a{
 a:disabled{
     color:azure;
 }
+.msg-success, .msg-warning, .msg-error, .msg-info{
+    width: 400px;
+    height: 100px;
+    position: sticky;
+    left: 50px;
+    top: 50px;
+    text-align: center;
+    align-content:center ;
+    font-family: m;
+    font-size: 40px;
+    border-radius: 15px;
+    z-index: 99999999;
+}
+.msg-success{
+    border: 3px green solid;
+    background-color: #24a81f50;
+    color: rgb(255, 255, 255);
+    
+}
+.msg-error{
+    border: 3px rgb(128, 0, 0) solid;
+    background-color: #a81f1f4b;
+    color: rgb(22, 0, 0);
+    
+}
+.msg-warning{
+    border: 3px rgb(122, 128, 0) solid;
+    background-color: #a8a81f5a;
+    color: rgb(21, 22, 0);
+    
+}
+.msg-info{
+    border: 3px rgb(0, 124, 128) solid;
+    background-color: #1f96a8aa;
+    color: rgb(0, 19, 22);
+    
+}

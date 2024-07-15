@@ -3,6 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from pixel import forms
 from .models import *
+from django.contrib import messages
+
+
 # Create your views here.
 def house(req):
     el = users.objects.get(id=1)
@@ -22,9 +25,6 @@ def projects_(req):
 
 def contact_(req):
     el = users.objects.get(id=1)
-    smstr = ""
-    smstr.encode('utf-8')
-    smstr = smstr.replace("","پیام شما ارسال شد")
     if req.POST:
         form = forms.contact(req.POST)
         if form.is_valid():
@@ -32,10 +32,14 @@ def contact_(req):
                 uname = None,
                 email = form.cleaned_data['email'],
                 title = form.cleaned_data['title'],
-                mess=form.cleaned_data['subject']
-            )
+                mess=form.cleaned_data['mess']
             
-    return render(req,'pages/contact.html',{'user':el})
+            )
+            messages.add_message(req, messages.SUCCESS, "پیام بدرستی ارسال شد ")
+        else:
+            messages.add_message(req, messages.ERROR, "ارسال پیام با مشکل مواجه شده است")
+            
+    return render(req,'pages/contact.html',{'user':el,'form':forms.contact})
 
 
 def testdb(req):

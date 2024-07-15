@@ -52,6 +52,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'msg-success',
+    messages.ERROR: 'msg-error',
+    messages.WARNING: 'msg-warning',
+    messages.INFO: 'msg-info',
+    
+}
 ROOT_URLCONF = 'resume.urls'
 
 TEMPLATES = [
