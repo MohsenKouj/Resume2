@@ -1,5 +1,5 @@
 from django import forms
-
+from captcha.fields import CaptchaField
 class comment(forms.Form):
     username = forms.CharField(max_length=255)
     email = forms.EmailField(max_length=255)
@@ -11,3 +11,4 @@ class contact(forms.Form):
     email=forms.EmailField()
     title=forms.CharField(max_length=255)
     mess=forms.CharField(widget=forms.Textarea,required=False)
+    captcha=CaptchaField()

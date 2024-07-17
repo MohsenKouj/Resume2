@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'pixel.apps.PixelConfig',
     'django.contrib.humanize',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',    
+    'django_summernote',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 from django.contrib.messages import constants as messages
@@ -91,7 +96,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+SITE_ID = 1
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

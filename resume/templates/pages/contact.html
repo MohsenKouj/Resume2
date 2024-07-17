@@ -51,7 +51,7 @@
       </div>
       <div class="row no-gutters block-9" style="padding: 40px;">
         <div class="col-md-6 order-md-last d-flex" style="width:500px;height:600px">
-          <form action="{% url 'contact' %}" class="bg-light p-4 p-md-5 contact-form" method="post">
+          <form action="{% url 'pixel:contact' %}" class="bg-light p-4 p-md-5 contact-form" method="post">
             {% csrf_token %}
             {{form.as_p}}
             <div class="form-group" style="text-align: center;">

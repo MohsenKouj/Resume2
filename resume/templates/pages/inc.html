@@ -2,15 +2,15 @@
 {% load humanize %}
 {% for r in posts %}
 <div class="block-21 mb-4 d-flex"style="text-align: right;">
-<a class="blog-img mr-4" href="{% url 'single' post=r.id %}"><img src="{{r.image.url}}" alt="img" style="width: inherit;height: inherit;display: inline-block;position: relative;left:9px;"></a>
+<a class="blog-img mr-4" href="{% url 'pixel:single' post=r.id %}"><img src="{{r.image.url}}" alt="img" style="width: inherit;height: inherit;display: inline-block;position: relative;left:9px;"></a>
 <div class="text">
-<h3 class="heading"><a href="{% url 'single' post=r.id %}" style="font-family: btitr;">{{r.title}}</a></h3>
+<h3 class="heading"><a href="{% url 'pixel:single' post=r.id %}" style="font-family: btitr;">{{r.title}}</a></h3>
 <div class="meta">
-<div><a href="{% url 'single' post=r.id %}" style="font-family: irsans;"><span class="icon-calendar"></span>{{r.p_date|naturaltime}}</a></div>
-<div><a href="{% url 'single' post=r.id %}" style="font-family: irsans"><span class="icon-person"></span>{{r.uname.fname}} {{r.uname.lname}}</a></div>
-<div><a href="{% url 'single' post=r.id %}" style="font-family: irsans;"><span class="icon-chat"></span>بازدید کننده:{{r.cview|naturaltime}}</a></div>
+<div><a href="{% url 'pixel:single' post=r.id %}" style="font-family: irsans;"><span class="icon-calendar"></span>{{r.p_date|naturaltime}}</a></div>
+<div><a href="{% url 'pixel:single' post=r.id %}" style="font-family: irsans"><span class="icon-person"></span>{{r.uname.fname}} {{r.uname.lname}}</a></div>
+<div><a href="{% url 'pixel:single' post=r.id %}" style="font-family: irsans;"><span class="icon-chat"></span>بازدید کننده:{{r.cview|naturaltime}}</a></div>
 {% for i in r.category.all %}
-<a href="{% url 'single' post=r.id %}"><span style="border-width: 2px;border-style: ridge;display: inline-block;margin-top: 2px;padding: 4px;font-size: 12px;font-family: vazir;border-radius: 10px;">{{i.name}} </span></a>
+<a href="{% url 'pixel:single' post=r.id %}"><span style="border-width: 2px;border-style: ridge;display: inline-block;margin-top: 2px;padding: 4px;font-size: 12px;font-family: vazir;border-radius: 10px;">{{i.name}} </span></a>
 {% endfor %}
 </div>
 </div>

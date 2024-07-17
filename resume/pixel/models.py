@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Accounts(models.Model):
     typeofacc = models.CharField(max_length=255)
@@ -83,6 +83,9 @@ class posts(models.Model):
     
     def __str__(self):
         return f'{self.id}. {self.title}'
+    
+    def get_absolute_url(self):
+        return reverse('pixel:single',kwargs={'post':self.id})
 
 class comments(models.Model):
     uname = models.ForeignKey(users, on_delete=models.SET_NULL,null=True)

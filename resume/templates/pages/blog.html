@@ -26,18 +26,18 @@
           {% for p in posts %}
           <div class="blog-entry justify-content-end" style="width: 350px;padding: 10px;background-repeat: no-repeat;
           background-color: hsl(0, 0%, 5%);border-radius: 10px;">
-            <a href="{% url 'single' post=p.id %}" class="block-20">
+            <a href="{% url 'pixel:single' post=p.id %}" class="block-20">
               <img src="{{p.image.url}}" alt="img" style="background-size: contain;margin: 5px;border-radius: 10px;">
             </a>
             <div class="text mt-3 float-right d-block" style="text-align: right;">
               <div class="d-flex align-items-center mb-3 meta">
                 <p class="mb-0">
                   <span class="mr-2" style="font-family: vazir ;">{{p.p_date|naturalday}}</span>
-                  <a href="{% url 'single' post=p.id %}" class="mr-2" style="font-family: vazir ;">{{p.uname.fname}} {{p.uname.lname}}</a>
-                  <a href="{% url 'single' post=p.id %}" class="meta-chat"><span class="icon-chat"></span> بازدید کننده: {{p.cview|intword}}</a>
+                  <a href="{% url 'pixel:single' post=p.id %}" class="mr-2" style="font-family: vazir ;">{{p.uname.fname}} {{p.uname.lname}}</a>
+                  <a href="{% url 'pixel:single' post=p.id %}" class="meta-chat"><span class="icon-chat"></span> بازدید کننده: {{p.cview|intword}}</a>
                 </p>
               </div>
-              <h3 class="heading" style="font-family: btitr ;"><a href="{% url 'single' post=p.id %}">{{p.title}}</a></h3>
+              <h3 class="heading" style="font-family: btitr ;"><a href="{% url 'pixel:single' post=p.id %}">{{p.title}}</a></h3>
               <p style="font-family: irsans ;">
                 {{p.desc|truncatewords:30}}
               </p>

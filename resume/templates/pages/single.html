@@ -21,7 +21,7 @@
 </p>
 <h2 class="mb-3" style="direction: rtl;text-align: right;font-family: btitr;">{{post.title}}</h2><h4 style="text-align: right;font-family: m;">بازدید کننده: {{post.cview|intword}}</h6>
 
-<p style="text-align: right;font-family: irsans;">{{post.desc}}</p>
+<p style="text-align: right;font-family: irsans;">{{post.desc|safe}}</p>
 <div class="tag-widget post-tag-container mb-5 mt-5">
 <div class="tagcloud">
 </div>
@@ -31,7 +31,7 @@
 <img src="{{post.uname.image.url}}" alt="Image placeholder" class="img-fluid mb-4">
 </div>
 <div class="desc"style="text-align: right;direction: rtl;">
-<a href="{% url 'blogsn' p=post.uname.username typ=0 %}"><h3 style="font-family: vazir;">{{post.uname.fname}} {{post.uname.lname}}</h3></a>
+<a href="{% url 'pixel:blogsn' p=post.uname.username typ=0 %}"><h3 style="font-family: vazir;">{{post.uname.fname}} {{post.uname.lname}}</h3></a>
 <p style="font-family: irsans">{{post.uname.about}}</p>
 </div>
 </div>
@@ -55,7 +55,7 @@
 
 <div class="comment-form-wrap pt-5">
 <h3 class="mb-5" style="text-align: right;font-family: vazir;">نظر بدهید</h3>
-<form action="{% url 'sendComment' post=post.id%}" method="post" class="p-5 bg-dark" style="text-align: right;direction: ltr;">{% csrf_token %}
+<form action="{% url 'pixel:sendComment' post=post.id%}" method="post" class="p-5 bg-dark" style="text-align: right;direction: ltr;">{% csrf_token %}
 {{comform.as_p}}
 <input type="submit" value="send">
 </form>
@@ -75,7 +75,7 @@
 <h3 class="heading-sidebar" style="font-size: 20px;font-family: btitr;">دسته‌بندی ها</h3>
 <ul class="categories">
 {% for cs in post.category.all %}
-<li><a href="{% url 'blogs' name=cs.name typ=1 %}" style="font-size: 19px;font-family: vazir;">{{cs.name}}<span>(دیدن)</span></a></li>
+<li><a href="{% url 'pixel:blogs' name=cs.name typ=1 %}" style="font-size: 19px;font-family: vazir;">{{cs.name}}<span>(دیدن)</span></a></li>
 {% endfor %}
 </ul>
 </div>
