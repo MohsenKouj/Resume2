@@ -98,3 +98,70 @@ a:disabled{
     color: rgb(255, 255, 255);
     
 }
+.content{
+    width: 400px;
+    height: 600px;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+.form{
+    box-sizing: content-box;
+    padding: 30px;
+    border: 3px green solid;
+    border-radius: 40px;
+    padding-top: 10px;
+}
+.form input{
+    margin: 10px 0;
+    width: 15rem;
+    height: 2rem;
+    border-radius: 10px;
+    border: green 2px solid;
+}
+.form h2{
+    margin-top: 0;
+    background-color: #7c6dc8;
+    height: 50px;
+    align-content: center;
+}
+#submit,#back{
+    margin: 10px 0;
+    width: 5rem;
+    height: 2rem;
+    
+}
+#submit{
+    background-color: lightgreen;
+    border-radius: 10px;
+}
+#back{
+    background-color: rgb(144, 149, 238);
+    border-radius: 10px;
+    display: inline-block;
+    color: black;
+    align-content: center;
+    border: blue 2px solid;
+    height: 1.9rem;
+}
+.body{
+    height: 650px;
+    background-image: linear-gradient(327deg, #24ab129c, transparent);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#house{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #919dc4;
+    border-color: rgb(17, 0, 128);
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    align-content: center;
+    font-size: 25px;
+    position: relative;
+    float: right;
+}

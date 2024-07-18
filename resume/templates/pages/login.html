@@ -1,14 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/Dstyle.css' %}">
 </head>
-<body>
-    <form action="#" method="post">
-        <input type="text">
-        <input type="submit" value="ثبت نام">
-    </form>
+
+<body class="body">
+    <a type="submit" id="house"><span style="position: relative;top:-3.5px">➡</span></a><br>
+    <div class="content">
+        <form action="#" method="post" class="form">
+            <h2>ورود به حساب</h2>
+            <input type="username" placeholder="username"><br>
+            <input type="password" placeholder="password"><br>
+            <input type="submit" value="ورود" id="submit">
+            <a type="submit" id="back">عضو شدن</a><br>
+            
+
+        </form>
+    </div>
 </body>
+
 </html>

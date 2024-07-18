@@ -17,15 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib.sitemaps.views import sitemap
-from pixel import sitemaps
+from . import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('pixel.urls')),
-    path('summernote/', include('django_summernote.urls')),
-    path('editor/', include('django_summernote.urls')),
-    path('captcha/', include('captcha.urls')),
-    path('',include('accounts.urls')),
+    path('login/',views.login,name='login'),
+    #path('signup/',views.signup,name='signup'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
