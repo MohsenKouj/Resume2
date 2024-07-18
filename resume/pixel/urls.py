@@ -11,6 +11,7 @@ from django.urls import path
 from .sitemaps import StaticViewSitemap,BlogSitemap
 from . import views
 
+from .feeds import LatestEntriesFeed
 
 sitemaps = {
     "static": StaticViewSitemap,
@@ -34,6 +35,8 @@ urlpatterns = [
     
     path('robots.txt', include('robots.urls')),
     path('captcha/', include('captcha.urls')),
+    path("rss/feed/", LatestEntriesFeed()),
+    
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
