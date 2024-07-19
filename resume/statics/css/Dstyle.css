@@ -165,3 +165,50 @@ a:disabled{
     position: relative;
     float: right;
 }
+.content-2{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    height: 670px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+.content-2 form input{
+    margin: 10px 0;
+}
+.content-2 form{
+    width: 900px;
+    height: 400px;
+    margin: 0 auto;
+    direction: rtl;
+    text-align: center;
+}
+.body-2 {
+    background-color: rgb(39, 116, 203);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.in div{
+    width: 50%;
+    text-align: center;
+    align-content: center;
+}
+.content-2 form textarea{
+    margin: 0 auto;
+}
+.out{
+    height: 100px;
+}
+.out div{
+    width: 50%;
+    height: 200px;
+    align-content: normal;
+}
+#overPic{
+    width: 100px;
+    height: 120px;
+    border: 2px solid black;
+    margin-right: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

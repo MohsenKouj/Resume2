@@ -1,26 +1,57 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/Dstyle.css' %}">
 </head>
-<body>
-    <form action="#" method="post">
-        <input type="username"><br>
-        <input type="file"><br>
-        <input type="password"><br>
-        <input type="text"><br>
-        <input type="text"><br>
-        <input type="number"><br>
-        <input type="email"><br>
-        <input type="text"><br>
-        <input type="date"><br>
-        <input type="text"><br>
-        <input type="text"><br>
-        <input type="text"><br>
-        <input type="text"><br>
-        <textarea name="about" id="about" cols="30" rows="10"></textarea>
-    </form>
+
+<body class="body-2">
+    <div class="content-2">
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div style="display: flex;width: inherit;height: inherit;" class="in">
+                <div>
+                    <input type="username" placeholder="نام کاربری"><br>
+                    <input type="password" placeholder="گذرواژه"><br>
+                    <input type="text" placeholder="نام"><br>
+                    <input type="text" placeholder="نام خانوادگی"><br>
+                    <input type="number" placeholder="شماره تلفن"><br>
+                    <input type="text" placeholder="نشانی"><br>
+
+                </div>
+                <div>
+                    <input type="date" placeholder="تاریخ تولد"><br>
+                    <input type="number" placeholder="تحصیلات"><br>
+                    <input type="text" placeholder="زبان ها"><br>
+                    <input type="text" placeholder="کد پستی"><br>
+                    <input type="text" placeholder="پروژه های خاتمه یافته"><br>
+                    <input type="email" placeholder="ایمیل"><br>
+
+                </div>
+            </div>
+            <div style="display: flex" class="out">
+                <div>
+                    <input type="file" accept="image/*" id="adrpic">
+                    <button onclick="change()">import</button>
+                    <div id="overPic"></div>
+                </div>
+                <div>
+                    <label for="about">مشخصات:</label>
+                    <textarea name="about" id="about" cols="60" rows="10"></textarea>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function change(){
+        document.getElementById('overPic').style.backgroundImage = document.getElementById("adrpic").innerText
+        }
+    </script>
 </body>
+
 </html>
