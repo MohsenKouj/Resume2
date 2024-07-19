@@ -1,9 +1,34 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth import authenticate,login
+from django.contrib import messages
 from .forms import *
 # Create your views here.
 def login(req):
+    if req.POST:
+        username = req.POST.get('username')
+        password = req.POST.get('password')
+        user = authenticate(request=req,username=username, password=password)
+        if user is not None:
+            messages.add_message(req,messages.SUCCESS,"خوش آمدید")
+            return HttpResponseRedirect('/')
+        else:
+            messages.add_message(req,messages.ERROR,"مشخصات ورودی اشتباه است")
+        
     return render(req, 'pages/login.html')
 
+
 def signup(req):
-    cap = captcha()
-    return render(req, 'pages/signup.html',{'captcha':cap})
+    cap = sinupForm()
+    msg = ''
+    if req.POST:
+        cap = sinupForm(req.POST)
+        if cap.is_valid():
+            username = req.POST.get('username')
+            password = req.POST.get('password')
+            return HttpResponseRedirect('/')
+        else:
+            msg = "<h1>Invalid POST request</h1>"
+            
+            
+    return render(req, 'pages/signup.html',{'captcha':cap,'msg':msg})

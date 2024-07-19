@@ -10,12 +10,23 @@
 </head>
 
 <body class="body">
+    {% for message in messages %}
+    <p class="{{message.tags}}" id="{{message.tags}}">{{message}}</p>
+    <script>
+      setTimeout(()=>{document.getElementById("msg-success").style.display = "none"},4000)
+      setTimeout(()=>{document.getElementById("msg-error").style.display = "none"},4000)
+      setTimeout(()=>{document.getElementById("msg-warning").style.display = "none"},4000)
+      setTimeout(()=>{document.getElementById("msg-info").style.display = "none"},4000)
+    
+    </script>
+    {% endfor %}
     <a href="{% url 'pixel:house' %}" id="house"><span style="position: relative;top:-3.5px">➡</span></a><br>
     <div class="content">
-        <form action="#" method="post" class="form">
+        <form action="{% url 'accounts:login' %}" method="post" class="form">
+            {% csrf_token %}
             <h2>ورود به حساب</h2>
-            <input type="username" placeholder="username"><br>
-            <input type="password" placeholder="password"><br>
+            <input type="username" placeholder="username" name="username"><br>
+            <input type="password" placeholder="password" name="password"><br>
             <input type="submit" value="ورود" id="submit">
             <a href="{% url 'accounts:signup' %}" id="back">عضو شدن</a><br>
             

@@ -76,25 +76,25 @@ a:disabled{
 }
 .msg-success{
     border: 3px green solid;
-    background-color: #24a81f50;
+    background-color: #24a81f;
     color: rgb(255, 255, 255);
     
 }
 .msg-error{
     border: 3px rgb(128, 0, 0) solid;
-    background-color: #a81f1f4b;
+    background-color: #a81f1f;
     color: rgb(255, 255, 255);
     
 }
 .msg-warning{
     border: 3px rgb(122, 128, 0) solid;
-    background-color: #a8a81f5a;
+    background-color: #a8a81f;
     color: rgb(250, 250, 250);
     
 }
 .msg-info{
     border: 3px rgb(0, 124, 128) solid;
-    background-color: #1f96a8aa;
+    background-color: #1f96a8;
     color: rgb(255, 255, 255);
     
 }
