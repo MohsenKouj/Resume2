@@ -124,11 +124,17 @@ a:disabled{
     background-color: #7c6dc8;
     height: 50px;
     align-content: center;
+    border-radius: 3px;
+    font-family: vazir;
 }
 #submit,#back{
     margin: 10px 0;
     width: 5rem;
-    height: 2rem;
+    height: 2.5rem;
+    font-family: m;
+    font-size: 20px;
+    align-content: normal;
+    display: inline-block;
     
 }
 #submit{
@@ -142,7 +148,8 @@ a:disabled{
     color: black;
     align-content: center;
     border: blue 2px solid;
-    height: 1.9rem;
+    height: 2.32rem;
+    text-decoration: none;
 }
 .body{
     height: 650px;
@@ -164,17 +171,20 @@ a:disabled{
     font-size: 25px;
     position: relative;
     float: right;
+    text-decoration: none;
 }
 .content-2{
     width: 1000px;
     margin: 0 auto;
     background-color: #fff;
-    height: 670px;
+    height: 710px;
     padding: 0 30px;
     box-sizing: border-box;
 }
 .content-2 form input{
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 .content-2 form{
     width: 900px;
@@ -203,12 +213,42 @@ a:disabled{
     width: 50%;
     height: 200px;
     align-content: normal;
+    font-family: vazir;
 }
-#overPic{
-    width: 100px;
-    height: 120px;
-    border: 2px solid black;
-    margin-right: 100px;
-    background-repeat: no-repeat;
-    background-size: cover;
+.content-2 form input[type="text"],.content-2 form input[type="password"],.content-2 form input[type="username"],
+.content-2 form input[type="email"],.content-2 form input[type="tel"],.content-2 form input[type="date"]{
+    width:17rem;
+    height: 2rem;
+    font-family: vazir;
+}
+.none-important{
+    display: inline-block;
+    margin-right: 11px;
+}
+.content-2 h2{
+
+    font-family: m;
+    width: auto;
+    margin: 0;
+    text-align: center;
+    height: 50px;
+    align-content: center;
+    border-bottom: 2px solid #6384e7;
+}
+.content-2 input[type="submit"]{
+    font-family: irsans;
+    border-radius: 3px;
+    border: 2px solid #ffffff;
+    background-color: #7c6dc8;
+    font-size: 16px;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: #7c6dc8;
+    height: 2rem;
+}
+.content-2 input[type="submit"]:hover{
+    background-color: #9386d7;
+    outline-color: #9386d7;
+    transition: all 500ms ease;
+    cursor: pointer;
 }

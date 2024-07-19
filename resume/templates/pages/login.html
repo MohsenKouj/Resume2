@@ -10,14 +10,14 @@
 </head>
 
 <body class="body">
-    <a type="submit" id="house"><span style="position: relative;top:-3.5px">➡</span></a><br>
+    <a href="{% url 'pixel:house' %}" id="house"><span style="position: relative;top:-3.5px">➡</span></a><br>
     <div class="content">
         <form action="#" method="post" class="form">
             <h2>ورود به حساب</h2>
             <input type="username" placeholder="username"><br>
             <input type="password" placeholder="password"><br>
             <input type="submit" value="ورود" id="submit">
-            <a type="submit" id="back">عضو شدن</a><br>
+            <a href="{% url 'accounts:signup' %}" id="back">عضو شدن</a><br>
             
 
         </form>

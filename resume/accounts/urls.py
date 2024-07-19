@@ -18,10 +18,11 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from . import views
-
+app_name="accounts"
 urlpatterns = [
     path('login/',views.login,name='login'),
     path('signup/',views.signup,name='signup'),
+    path('captcha/', include('captcha.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

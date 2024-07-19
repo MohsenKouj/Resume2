@@ -11,47 +11,45 @@
 
 <body class="body-2">
     <div class="content-2">
+        <h2>ثبت نام/عضویت</h2>
         <form action="#" method="post">
             {% csrf_token %}
             <div style="display: flex;width: inherit;height: inherit;" class="in">
                 <div>
-                    <input type="username" placeholder="نام کاربری"><br>
-                    <input type="password" placeholder="گذرواژه"><br>
-                    <input type="text" placeholder="نام"><br>
-                    <input type="text" placeholder="نام خانوادگی"><br>
-                    <input type="number" placeholder="شماره تلفن"><br>
-                    <input type="text" placeholder="نشانی"><br>
-
+                    <span style="color: red;font-size: 20px;">*</span><input type="username" style="direction: ltr" placeholder="نام کاربری" class="important" required><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="password" style="direction: ltr" placeholder="گذرواژه" class="important" required><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="password" style="direction: ltr" placeholder="تکرار گذرواژه" class="important" required><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="text" placeholder="نام" class="important" required><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="text" placeholder="نام خانوادگی" class="important" required><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="tel" placeholder="شماره تلفن" class="important" required><br>
+                    <input type="text" placeholder="نشانی" class="none-important" ><br>
+ 
                 </div>
                 <div>
-                    <input type="date" placeholder="تاریخ تولد"><br>
-                    <input type="number" placeholder="تحصیلات"><br>
-                    <input type="text" placeholder="زبان ها"><br>
-                    <input type="text" placeholder="کد پستی"><br>
-                    <input type="text" placeholder="پروژه های خاتمه یافته"><br>
-                    <input type="email" placeholder="ایمیل"><br>
-
+                    <span style="color: red;font-size: 20px;">*</span><input type="date" placeholder="تاریخ تولد" class="important" required><br>
+                    <input type="text" placeholder="تحصیلات" class="none-important" ><br>
+                    <input type="text" placeholder="زبان ها" class="none-important" ><br>
+                    <input type="text" placeholder="کد پستی" class="none-important" ><br>
+                    <input type="text" placeholder="پروژه های خاتمه یافته" class="none-important" ><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="email" style="direction: ltr" placeholder="ایمیل" class="important" required><br>
+                    {{captcha.captcha}}
                 </div>
             </div>
             <div style="display: flex" class="out">
                 <div>
                     <input type="file" accept="image/*" id="adrpic">
-                    <button onclick="change()">import</button>
-                    <div id="overPic"></div>
                 </div>
                 <div>
                     <label for="about">مشخصات:</label>
                     <textarea name="about" id="about" cols="60" rows="10"></textarea>
-                    
-                </div>
+                </div><br>
+                
+            </div>
+            <div style="position: relative;top:100px;align-content: center;border-top: 2px solid #2b48ba;">
+                <input type="submit" value="ثبت نام">
             </div>
         </form>
     </div>
-    <script>
-        function change(){
-        document.getElementById('overPic').style.backgroundImage = document.getElementById("adrpic").innerText
-        }
-    </script>
 </body>
 
 </html>
