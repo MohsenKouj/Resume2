@@ -1,11 +1,7 @@
 {% load static %}
 
-<!DOCTYPE 
-html
->
-<html
-lang = "fa"
->
+<!DOCTYPE html>
+<html lang="fa">
 
 <head>
   <title>mohsen khayyat - web developer and data scientist</title>
@@ -24,7 +20,8 @@ lang = "fa"
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/Dstyle.css' %}">
   <meta name="keywords" content="محسن خیاط,رزومه,طراحی سایت">
-  <meta name="description" content="من محسن خیاط هستم متخصص و طراح سایت با سه سال تجربه‌ کاری در حوزه های مختلف از جمله برنامه‌نویسی ویندوز">
+  <meta name="description"
+    content="من محسن خیاط هستم متخصص و طراح سایت با سه سال تجربه‌ کاری در حوزه های مختلف از جمله برنامه‌نویسی ویندوز">
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -37,7 +34,8 @@ lang = "fa"
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav nav ml-auto">
-          <li class="nav-item"><a href="{% url 'pixel:house' %}" class="nav-link" style="font-size: 20px;font-weight: bold;"><span>صفحه
+          <li class="nav-item"><a href="{% url 'pixel:house' %}" class="nav-link"
+              style="font-size: 20px;font-weight: bold;"><span>صفحه
                 اصلی</span></a></li>
           <li class="nav-item"><a href="{% url 'pixel:resume' %}" class="nav-link"
               style="font-size: 18px;"><span>رزومه</span></a></li>
@@ -45,30 +43,40 @@ lang = "fa"
               style="font-size: 18px;"><span>مهارت‌ها</span></a></li>
           <li class="nav-item"><a href="{% url 'pixel:projects' %}" class="nav-link"
               style="font-size: 18px;"><span>پروژه‌ها</span></a></li>
-          
+
           <li class="nav-item"><a href="{% url 'pixel:contact' %}" class="nav-link"
               style="font-size: 18px;"><span>ارتباط</span></a></li>
-          
+
           <li class="nav-item"><a href="{% url 'pixel:blog' %}" class="nav-link"
               style="font-size: 18px;"><span>وبلاگ</span></a></li>
+          {% if is_user %}
+          <p style="padding-top: 15px;text-align: left;color: rgb(130, 130, 130);font-family: vazir;margin-right: 170px;">
+          شما هم اکنون دارای حساب کاربری هستید
+          </p>
+          {% else %}
+          <li class="nav-item" style="margin-right: 140px;"><a href="{% url 'accounts:signup' %}" class="nav-link"
+              style="font-size: 15px;"><span>➡ایجاد حساب</span></a></li>
+          <li class="nav-item"><a href="{% url 'accounts:login' %}" class="nav-link"
+              style="font-size: 15px;"><span>➡ورود به حساب</span></a></li>
+          {% endif %}
         </ul>
       </div>
     </div>
   </nav>
   {% for message in messages %}
-    <p class="{{message.tags}}" id="{{message.tags}}" style="position: sticky;">{{message}}</p>
-    <script>
-      setTimeout(()=>{document.getElementById("msg-success").style.display = "none"},4000)
-      setTimeout(()=>{document.getElementById("msg-error").style.display = "none"},4000)
-      setTimeout(()=>{document.getElementById("msg-warning").style.display = "none"},4000)
-      setTimeout(()=>{document.getElementById("msg-info").style.display = "none"},4000)
-    
-    </script>
+  <p class="{{message.tags}}" id="{{message.tags}}" style="position: sticky;">{{message}}</p>
+  <script>
+    setTimeout(() => { document.getElementById("msg-success").style.display = "none" }, 4000)
+    setTimeout(() => { document.getElementById("msg-error").style.display = "none" }, 4000)
+    setTimeout(() => { document.getElementById("msg-warning").style.display = "none" }, 4000)
+    setTimeout(() => { document.getElementById("msg-info").style.display = "none" }, 4000)
+
+  </script>
   {% endfor %}
-{% block content %}
-<!-- content -->
-{% endblock %}
-<footer class="ftco-footer ftco-section" id="con-st" style="text-align: right;direction: rtl;">
+  {% block content %}
+  <!-- content -->
+  {% endblock %}
+  <footer class="ftco-footer ftco-section" id="con-st" style="text-align: right;direction: rtl;">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md">
@@ -87,11 +95,16 @@ lang = "fa"
           <div class="ftco-footer-widget mb-4 ml-md-4">
             <h2 class="ftco-heading-2" style="margin-right: 50px;font-family: vazir;">پیوند‌ها</h2>
             <ul class="list-unstyled">
-              <li style="font-family: irsans;"><a href="{% url 'pixel:house' %}" ><span class="icon-long-arrow-right mr-2"></span> {{link_1}}</a></li>
-              <li style="font-family: irsans;"><a href="{% url 'pixel:resume' %}"><span class="icon-long-arrow-right mr-2"></span> {{link_2}}</a></li>
-              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{link_3}}</a></li>
-              <li style="font-family: irsans;"><a href="{% url 'pixel:projects' %}"><span class="icon-long-arrow-right mr-2"></span> {{link_4}}</a></li>
-              <li style="font-family: irsans;"><a href="{% url 'pixel:contact' %}"><span class="icon-long-arrow-right mr-2"></span> {{link_5}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'pixel:house' %}"><span
+                    class="icon-long-arrow-right mr-2"></span> {{link_1}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'pixel:resume' %}"><span
+                    class="icon-long-arrow-right mr-2"></span> {{link_2}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span>
+                  {{link_3}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'pixel:projects' %}"><span
+                    class="icon-long-arrow-right mr-2"></span> {{link_4}}</a></li>
+              <li style="font-family: irsans;"><a href="{% url 'pixel:contact' %}"><span
+                    class="icon-long-arrow-right mr-2"></span> {{link_5}}</a></li>
             </ul>
           </div>
         </div>
@@ -99,11 +112,16 @@ lang = "fa"
           <div class="ftco-footer-widget mb-4">
             <h2 class="ftco-heading-2" style="margin-right: 50px;font-family: vazir;">سرویس‌ها</h2>
             <ul class="list-unstyled">
-              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_1}}</a></li>
-              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_2}}</a></li>
-              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_3}}</a></li>
-              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_4}}</a></li>
-              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span> {{service_5}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span>
+                  {{service_1}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span>
+                  {{service_2}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span>
+                  {{service_3}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span>
+                  {{service_4}}</a></li>
+              <li style="font-family: irsans;"><a href="#"><span class="icon-long-arrow-right mr-2"></span>
+                  {{service_5}}</a></li>
             </ul>
           </div>
         </div>
@@ -112,8 +130,10 @@ lang = "fa"
             <h2 class="ftco-heading-2" style="font-family: vazir;">سوال داری؟</h2>
             <div class="block-23 mb-3">
               <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text" style="font-family: irsans;">{{address}}</span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text" style="font-family: vazir;">{{cNumber}}</span></a></li>
+                <li><span class="icon icon-map-marker"></span><span class="text"
+                    style="font-family: irsans;">{{address}}</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text"
+                      style="font-family: vazir;">{{cNumber}}</span></a></li>
                 <li><a href="#"><span class="icon icon-envelope"></span><span class="text"><span class="__cf_email__"
                         data-cfemail="f1989f979eb1889e8483959e9c90989fdf929e9c">{{email}}</span></span></a>
                 </li>
@@ -146,9 +166,9 @@ lang = "fa"
   <script src="{% static 'js/Fadmin.js' %}"></script>
   <script src="{% static 'js/prim.js' %}"></script>
   {% if not is_user %}
-  <script>alert("حساب کاربری ندارید یکی بسازید")</script>
+  <script></script>
   {% else %}
-  <script>alert("شما حساب کاربری دارید")</script>
+  <script></script>
   {% endif %}
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
