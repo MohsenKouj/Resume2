@@ -3,15 +3,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/Dstyle.css' %}">
+  <title>Login V1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %} " />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/Dstyle.css' %}">
+
+  <meta name="robots" content="noindex, follow">
 </head>
 
-<body class="body">
-    {% for message in messages %}
-    <p class="{{message.tags}}" id="{{message.tags}}">{{message}}</p>
+<body>
+  {% for message in messages %}
+    <p class="{{message.tags}}" id="{{message.tags}}" style="position: absolute;">{{message}}</p>
     <script>
       setTimeout(()=>{document.getElementById("msg-success").style.display = "none"},4000)
       setTimeout(()=>{document.getElementById("msg-error").style.display = "none"},4000)
@@ -20,19 +37,80 @@
     
     </script>
     {% endfor %}
-    <a href="{% url 'pixel:house' %}" id="house"><span style="position: relative;top:-3.5px">➡</span></a><br>
-    <div class="content">
-        <form action="{% url 'accounts:login' %}" method="post" class="form">
-            {% csrf_token %}
-            <h2>ورود به حساب</h2>
-            <input type="username" placeholder="username" name="username"><br>
-            <input type="password" placeholder="password" name="password"><br>
-            <input type="submit" value="ورود" id="submit">
-            <a href="{% url 'accounts:signup' %}" id="back">عضو شدن</a><br>
-            
-
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-pic js-tilt" data-tilt>
+          <img src="{% static 'login/images/img-01.png' %}" alt="IMG">
+        </div>
+        <form class="login100-form validate-form" action="{% url 'accounts:login' %}" method="post">
+          {% csrf_token %}
+          <span class="login100-form-title" style="font-family: vazir;">
+            ورود به حساب کاربری
+          </span>
+          <div class="wrap-input100 validate-input" style="font-family: m;"
+            data-validate="ایمیل را وارد کنید: ex@abc.xyz">
+            <input class="input100" type="text" name="username" style="font-family: m;" placeholder="نام کاربری">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="wrap-input100 validate-input" style="font-family: m;" data-validate="پسورد را وارد کنید">
+            <input class="input100" type="password" style="font-family: m;" name="password" placeholder="گذرواژه">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" style="font-family: irsans;">
+              ورود
+            </button>
+          </div>
+          <div class="text-center p-t-12">
+            <span class="txt1" style="font-family: irsans;">
+              در صورت فراموشی نام کاربری / گذرواژه
+            </span>
+            <a class="txt2" href="#" style="font-family: irsans;">
+              کلیک کنید
+            </a>
+          </div>
+          <div class="text-center p-t-136">
+            <a class="txt2" href="{% url 'accounts:signup' %}" style="font-family: btitr;">
+              یکی بساز
+              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+            </a>
+          </div>
         </form>
+      </div>
     </div>
+  </div>
+
+  <script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+  <script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+  <script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+
+  <script src="{% static 'login/vendor/tilt/tilt.jquery.min.js' %}"></script>
+  <script>
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+
+  <script src="{% static 'login/js/main.js' %}"></script>
 </body>
 
 </html>

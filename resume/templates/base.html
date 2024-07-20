@@ -56,7 +56,7 @@ lang = "fa"
     </div>
   </nav>
   {% for message in messages %}
-    <p class="{{message.tags}}" id="{{message.tags}}">{{message}}</p>
+    <p class="{{message.tags}}" id="{{message.tags}}" style="position: sticky;">{{message}}</p>
     <script>
       setTimeout(()=>{document.getElementById("msg-success").style.display = "none"},4000)
       setTimeout(()=>{document.getElementById("msg-error").style.display = "none"},4000)
@@ -145,6 +145,11 @@ lang = "fa"
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/Fadmin.js' %}"></script>
   <script src="{% static 'js/prim.js' %}"></script>
+  {% if not is_user %}
+  <script>alert("حساب کاربری ندارید یکی بسازید")</script>
+  {% else %}
+  <script>alert("شما حساب کاربری دارید")</script>
+  {% endif %}
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
   <script>

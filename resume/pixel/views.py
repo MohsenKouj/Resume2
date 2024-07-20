@@ -9,11 +9,21 @@ from django.contrib import messages
 # Create your views here.
 def house(req):
     el = users.objects.get(id=1)
-    return render(req,'index.html',{'user':el})
+    is_user = False
+    if req.user.is_authenticated:
+        is_user = True
+    else:
+        is_user = False
+    return render(req,'index.html',{'user':el,'is_user':is_user})
 
 def resume(req):
     el = cards.objects.all()
-    return render(req,'pages/resume.html',{'cards':el})
+    is_user = False
+    if req.user.is_authenticated:
+        is_user = True
+    else:
+        is_user = False
+    return render(req,'pages/resume.html',{'cards':el,'is_user':is_user})
 
 def skills_(req):
     el = skills.objects.all()
