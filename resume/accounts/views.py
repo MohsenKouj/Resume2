@@ -24,12 +24,14 @@ def signup(req):
     cap = sinupForm()
     msg = ''
     if req.POST:
-        cap = sinupForm(req.POST)
+        cap = sinupForm(data=req.POST)
         if cap.is_valid():
             username = req.POST.get('username')
             password = req.POST.get('password')
             form = UserCreationForm(req.POST)
-            return HttpResponseRedirect('/')
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/')
         else:
             msg = "<h1>Invalid POST request</h1>"
             
