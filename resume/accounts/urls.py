@@ -23,6 +23,7 @@ urlpatterns = [
     path('login/',views.login,name='login'),
     path('signup/',views.signup,name='signup'),
     path('logout/',views.logout,name='logout'),
+    path('send-message-with-email/',views.send_email,name='send-email'),
     path('captcha/', include('captcha.urls')),
 ]
 
