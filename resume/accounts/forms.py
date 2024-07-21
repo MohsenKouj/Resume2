@@ -13,7 +13,7 @@ class sinupForm(forms.Form):
     education = forms.CharField(max_length=255,required=False)
     langs = forms.CharField(max_length=255,required=False)
     cod_posti = forms.CharField(max_length=255,required=False)
-    t_p = forms.CharField(max_length=255,required=False)
+    t_p = forms.IntegerField(required=False)
     email = forms.EmailField()
     captcha = CaptchaField()
     image= forms.ImageField(required=False)

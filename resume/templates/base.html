@@ -50,8 +50,8 @@
           <li class="nav-item"><a href="{% url 'pixel:blog' %}" class="nav-link"
               style="font-size: 18px;"><span>وبلاگ</span></a></li>
           {% if is_user %}
-          <p style="padding-top: 15px;text-align: left;color: rgb(130, 130, 130);font-family: vazir;margin-right: 170px;">
-          شما هم اکنون دارای حساب کاربری هستید
+          <p style="padding-top: 15px;text-align: left;color: rgb(130, 130, 130);font-family: vazir;margin-right: 140px;font-size: 12px;">
+          شما هم اکنون دارای حساب کاربری هستید <a href="{% url 'accounts:logout' %}" style="color: rgb(255, 255, 255);display: inline-block;width: 5rem;height: 2rem; background-color: red;border-radius: 10px;border-width: 2px;border-color: rgba(240, 248, 255, 0);outline-width: 2px;outline-style: solid;outline-color: red;text-align: center;align-content: center;margin-right: 5px;">خروج از حساب</a>
           </p>
           {% else %}
           <li class="nav-item" style="margin-right: 140px;"><a href="{% url 'accounts:signup' %}" class="nav-link"
