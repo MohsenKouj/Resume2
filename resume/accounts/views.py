@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.core.mail import send_mail
+from django.urls import reverse
 
 
 # Create your views here.
@@ -31,33 +32,35 @@ def signup(req):
     type_data = ''
     if req.POST:
         cap = sinupForm(data=req.POST)
-        if cap.is_valid():
-            username = cap.cleaned_data['username']
-            password = cap.cleaned_data['password']
-            type_data = type(cap.cleaned_data['username'])
-            if password == cap.cleaned_data['password2']:
+        #if cap.is_valid():
+        username = req.POST['username']
+        password = req.POST['password']
+        #type_data = type(cap.cleaned_data['username'])
+        #if password == cap.cleaned_data['password2']:
                 #if cap.cleaned_data['tellnumber'].isdigit():
-                    User.objects.create_user(username=username,password=password,email=cap.cleaned_data['email']
-                                             ,)
-                    users.objects.create(
-                        username=username,
-                        password=User.objects.get(username=username),
-                        email=cap.cleaned_data['email'],
-                        fname=cap.cleaned_data['fname'],
-                        lname=cap.cleaned_data['lname'],
-                        codeacc = ac.objects.get(id=2),
-                        tellNumber=cap.cleaned_data['tellnumber'],
-                        location=cap.cleaned_data['location'],
-                        birthday=cap.cleaned_data['birthday'],
-                        about=cap.cleaned_data['subject'],
-                        education=cap.cleaned_data['education'],
-                        langs=cap.cleaned_data['langs'],
-                        t_p=cap.cleaned_data['t_p'],
-                        cod_posti=cap.cleaned_data['cod_posti'],
-                        age=1
-                        
-                    )
-                  
+        '''User.objects.create_user(username=username,password=password,email=cap.cleaned_data['email']
+                                    ,)
+        users.objects.create(
+            username=username,
+            password=User.objects.get(username=username),
+            email=cap.cleaned_data['email'],
+            fname=cap.cleaned_data['fname'],
+            lname=cap.cleaned_data['lname'],
+            codeacc = ac.objects.get(id=2),
+            tellNumber=cap.cleaned_data['tellnumber'],
+            location=cap.cleaned_data['location'],
+            birthday=cap.cleaned_data['birthday'],
+            about=cap.cleaned_data['subject'],
+            education=cap.cleaned_data['education'],
+            langs=cap.cleaned_data['langs'],
+            t_p=cap.cleaned_data['t_p'],
+            cod_posti=cap.cleaned_data['cod_posti'],
+            age=1
+            
+        )
+            '''
+        reverse('accounts:send-email')
+                 
             
     return render(req, 'pages/signup.html',{'captcha':cap,'msg':msg,'type':type_data})
 
