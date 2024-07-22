@@ -8,8 +8,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.core.mail import send_mail as sm
 from django.urls import reverse
-
-
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 # Create your views here.
 def login(req):
     if req.POST:                                                                 
@@ -26,8 +27,10 @@ def login(req):
     return render(req,'pages/login.html',)
 
 email_ = ""
+absnumb = ""
+fname = ""
 def signup(req):
-    global email_
+    global email_,absnumb,fname
     cap = sinupForm()
     msg = ''
     type_data = ''
@@ -37,6 +40,10 @@ def signup(req):
         username = req.POST['username']
         password = req.POST['password']
         email_ = req.POST['email']
+        import random as r
+        absnumb = r.randint(100000,999999)
+        fname = req.POST['fname']
+        
         #type_data = type(cap.cleaned_data['username'])
         #if password == cap.cleaned_data['password2']:
                 #if cap.cleaned_data['tellnumber'].isdigit():
@@ -73,14 +80,18 @@ def logout(req):
     return redirect('/')
 
 def send_email(req):
-    from django.core import mail
-    global email_
-    import random as r
-    abscode = r.randint(1000000,9999999)
+    global email_,fname,absnumb
+    context = {'fname':fname, 'absnumb':absnumb}
+    html =  render_to_string(
+    template_name="pages/email_window.html",
+    context=context
+)
     sm(
-        "M E S S A G E   S E N D   B Y    M O H",
-        "Body goes here",
-        "",
-        ["rovec52340@tiervio.com"],
+        f"گذرواژه موقتی '{fname}'",
+        f"سلام ♥{fname}♥ خوش آمدید<br>گذرواژه ورود شما: '{absnumb}'",
+        settings.EMAIL_HOST_USER,
+        [email_],
+        fail_silently=False,
+        html_message=html
     )
     return HttpResponse('<h1>success</h1>')
