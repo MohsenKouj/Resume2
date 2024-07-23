@@ -9,32 +9,27 @@ from django.contrib import messages
 # Create your views here.
 def house(req):
     el = users.objects.get(id=1)
-    is_user = False
-    if req.user.is_authenticated:
-        is_user = True
-    else:
-        is_user = False
+    is_user = req.user.is_authenticated
     return render(req,'index.html',{'user':el,'is_user':is_user})
 
 def resume(req):
     el = cards.objects.all()
-    is_user = False
-    if req.user.is_authenticated:
-        is_user = True
-    else:
-        is_user = False
+    is_user = req.user.is_authenticated
     return render(req,'pages/resume.html',{'cards':el,'is_user':is_user})
 
 def skills_(req):
     el = skills.objects.all()
-    return render(req,'pages/skills.html',{'skills':el})
+    is_user = req.user.is_authenticated
+    return render(req,'pages/skills.html',{'skills':el,'is_user':is_user})
 
 def projects_(req):
     el = projects.objects.all()
-    return render(req,'pages/projects.html',{'projects':el})
+    is_user = req.user.is_authenticated
+    return render(req,'pages/projects.html',{'projects':el,'is_user':is_user})
 
 def contact_(req):
     el = users.objects.get(id=1)
+    is_user = req.user.is_authenticated
     if req.POST:
         form = forms.contact(req.POST)
         if form.is_valid():
@@ -61,6 +56,7 @@ def testdb(req):
 def blog(req,name=None,p=None,typ=0):
     now = timezone.datetime.now()
     el = posts.objects.filter(status=True)
+    is_user = req.user.is_authenticated
     if typ:
         if name:
             el = el.filter(category__name=name)
@@ -75,19 +71,21 @@ def blog(req,name=None,p=None,typ=0):
             els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
         else:
             els = [i for i in el if i.p_date.timestamp() < now.timestamp()]
-    return render(req,'pages/blog.html',{'posts':els,'name':name,'typ':typ})
+    return render(req,'pages/blog.html',{'posts':els,'name':name,'typ':typ,'is_user':is_user})
 
 def sin(req,number,number2,number3,acc):
     import math
     from .models import Accounts
     element = Accounts.objects.filter(id=acc)
     get_object_or_404(element)
+    is_user = req.user.is_authenticated
     context = {'answer':math.sin(number),'answer2':math.cos(number2),'answer3':math.tan(number3)
                ,'obj':element[0]}
     return render(req,'testUD.htm',context)
 
 def single(req,post):
     p = posts.objects.get(id=post)
+    is_user = req.user.is_authenticated
     now = timezone.datetime.now()
     if not p.status or p.p_date.timestamp() > now.timestamp():
         return HttpResponseNotFound(req)
@@ -117,5 +115,5 @@ def single(req,post):
         else:
             problems = [0,"❗ ERROR: INVALID FORM'S DATA"]
     
-    return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment,'msg':problems})
+    return render(req,'pages/single.html',{'post':p,'comments':com,'lengthc':len(com),'comform':Comment,'msg':problems,'is_user':is_user})
 

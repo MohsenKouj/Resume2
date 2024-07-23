@@ -27,6 +27,7 @@ class users(models.Model):
     langs=models.CharField(max_length=255,default="",null=True)
     t_p=models.IntegerField(default=0,null=True)
     cod_posti=models.CharField(max_length=255,default="",null=True)
+    black_list=models.BooleanField(default=False)
     def __str__(self):
         return f"{self.codeacc} - {self.username}"
 
