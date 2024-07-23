@@ -29,15 +29,26 @@
 <meta name="robots" content="noindex, follow">
 </head>
 <body>
+	{% for message in messages %}
+    <p class="{{message.tags}}" id="{{message.tags}}" style="position: absolute;">{{message}}</p>
+    <script>
+      setTimeout(()=>{document.getElementById("msg-success").style.display = "none"},4000)
+      setTimeout(()=>{document.getElementById("msg-error").style.display = "none"},4000)
+      setTimeout(()=>{document.getElementById("msg-warning").style.display = "none"},4000)
+      setTimeout(()=>{document.getElementById("msg-info").style.display = "none"},4000)
+    
+    </script>
+    {% endfor %}
 <div class="limiter">
 <div class="container-login100">
 <div class="wrap-login100">
-<form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="post" action="{% url 'accounts:e-code' %}">
+	{% csrf_token %}
 <span class="login100-form-title" style="font-family: vazir;">
 پنجره صحت‌سنجی
 </span>
 <div class="wrap-input100 validate-input m-b-16" data-validate="لطفا گذرواژه موقتی را وارد کنید">
-<input class="input100" type="text" name="username" placeholder="گذرواژه موقتی" style="font-family: vazir;">
+<input class="input100" type="text" name="code" placeholder="گذرواژه موقتی" style="font-family: vazir;" required>
 <span class="focus-input100"></span>
 </div>
 <div class="wrap-input100 validate-input" data-validate="Please enter password">
@@ -51,9 +62,7 @@
 </a>
 </div>
 <div class="container-login100-form-btn">
-<button class="login100-form-btn" style="font-family: vazir;">
-صحت سنجی
-</button>
+<input type="submit" value="صحت سنجی" class="login100-form-btn" style="font-family: vazir;">
 </div>
 <div class="flex-col-c p-t-170 mb">
 </div>
