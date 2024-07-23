@@ -36,18 +36,51 @@ def signup(req):
     type_data = ''
     if req.POST:
         cap = sinupForm(data=req.POST)
-        #if cap.is_valid():
-        username = req.POST['username']
-        password = req.POST['password']
-        email_ = req.POST['email']
-        import random as r
-        absnumb = r.randint(100000,999999)
-        fname = req.POST['fname']
-        
-        #type_data = type(cap.cleaned_data['username'])
-        #if password == cap.cleaned_data['password2']:
-                #if cap.cleaned_data['tellnumber'].isdigit():
-        '''User.objects.create_user(username=username,password=password,email=cap.cleaned_data['email']
+        if cap.is_valid():
+            password = cap.cleaned_data['password']
+            email_ = cap.cleaned_data['email']
+            import random as r
+            absnumb = r.randint(100000,999999)
+            fname = req.POST['fname']
+            
+            type_data = type(cap.cleaned_data['username'])
+            if password == cap.cleaned_data['password2']:
+                if cap.cleaned_data['tellnumber'].isdigit() and cap.cleaned_data['tellnumber'].__len__()  == 11:
+                    return HttpResponseRedirect(reverse('accounts:send-email'))
+                else:
+                    return HttpResponse('Invalid tellNumber')
+            else:
+                return HttpResponse('The ConfirmPassword is not a valid password')
+        else:
+            return HttpResponse('Invalid form')
+            
+    return render(req, 'pages/signup.html',{'captcha':cap,'msg':msg,'type':type_data})
+
+@login_required
+def logout(req):
+    if req.user.is_authenticated:
+        logt(req)
+    return redirect('/')
+
+def send_email(req):
+    global email_,fname,absnumb
+    context = {'fname':fname, 'absnumb':absnumb}
+    html =  render_to_string(
+    template_name="pages/email_window.html",
+    context=context
+    )
+    sm(
+        f"گذرواژه موقتی '{fname}'",
+        "",
+        settings.EMAIL_HOST_USER,
+        [email_],
+        fail_silently=False,
+        html_message=html
+    )
+    return HttpResponseRedirect(reverse('accounts:e-code'))
+
+def enter_code_signup(req):
+    '''User.objects.create_user(username=username,password=password,email=cap.cleaned_data['email']
                                     ,)
         users.objects.create(
             username=username,
@@ -68,30 +101,4 @@ def signup(req):
             
         )
             '''
-        return HttpResponseRedirect(reverse('accounts:send-email'))
-                 
-            
-    return render(req, 'pages/signup.html',{'captcha':cap,'msg':msg,'type':type_data})
-
-@login_required
-def logout(req):
-    if req.user.is_authenticated:
-        logt(req)
-    return redirect('/')
-
-def send_email(req):
-    global email_,fname,absnumb
-    context = {'fname':fname, 'absnumb':absnumb}
-    html =  render_to_string(
-    template_name="pages/email_window.html",
-    context=context
-)
-    sm(
-        f"گذرواژه موقتی '{fname}'",
-        f"سلام ♥{fname}♥ خوش آمدید<br>گذرواژه ورود شما: '{absnumb}'",
-        settings.EMAIL_HOST_USER,
-        [email_],
-        fail_silently=False,
-        html_message=html
-    )
-    return HttpResponse('<h1>success</h1>')
+    return render(req,'pages/enterCode.html')

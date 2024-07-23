@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+from .psws_compiles import GOOGLE_APP_PASSWORD
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -139,7 +139,7 @@ USE_TZ = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'misionorido@gmail.com'
-EMAIL_HOST_PASSWORD = "ozta uqbp ztga bayh"
+EMAIL_HOST_PASSWORD = GOOGLE_APP_PASSWORD
 EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 EMAIL_USE_SSL = False

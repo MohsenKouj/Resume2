@@ -24,6 +24,7 @@ urlpatterns = [
     path('signup/',views.signup,name='signup'),
     path('logout/',views.logout,name='logout'),
     path('send-message-with-email/',views.send_email,name='send-email'),
+    path('enter-code/',views.enter_code_signup,name='e-code'),
     path('captcha/', include('captcha.urls')),
 ]
 
