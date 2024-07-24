@@ -12,8 +12,10 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 
-userAppeared = dict()
+
 # Create your views here.
+def recovery_pass(req):
+    return render(req,'pages/reset_password.html')
 def login(req):
     if not req.user.is_authenticated:
         if req.POST:                                                                 
