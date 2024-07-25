@@ -22,16 +22,41 @@ class ops:
     _blank = False
 # Create your views here.
 do = False
+sendmail = False
 def new_pass(req):
     global do,fname,absnumb
     if do:
-        return render(req,'pages/new_password.html')
+        ''
     else:
         fname = "*"
         absnumb = r.randint(100000,999999)
-        ops._blank = True
-        ops.non = True
-        return HttpResponseRedirect(reverse('accounts:send-email'))
+        if req.POST:
+            profill = req.POST.get('availible')
+            person = None
+            try:
+                if req.POST['comboBox'][0]:
+                    person = User.objects.get(username=profill)
+                elif req.POST['comboBox'][1]:
+                    person = users.objects.get(fname=profill)
+                elif req.POST['comboBox'][2]:
+                    person = users.objects.get(lname=profill)
+            except:
+                ''
+            if person:
+                email_ = person.email
+                fname='کاربر'
+                ops._blank = True
+                ops.non = True
+                return HttpResponseRedirect(reverse('accounts:send-email'))
+                
+            else:
+                messages.add_message(req,messages.ERROR,"شخصی با این مشخصات یافت نشد")
+                
+            
+        if sendmail:
+            return HttpResponseRedirect(reverse('accounts:send-email'))
+        
+    return render(req,'pages/new_password.html',{'do':do})
     
 
 def login(req):
@@ -74,6 +99,7 @@ def signup(req):
                         absnumb = r.randint(100000,999999)
                         fname = req.POST['fname']
                         messages.add_message(req,messages.INFO,"ایمیل تایید شما ارسال شد")
+                        ops._blank = False
                         return HttpResponseRedirect(reverse('accounts:send-email'))
                     else:
                         messages.add_message(req,messages.ERROR,"شماره تلفن وارده اشتباه است")
@@ -96,7 +122,7 @@ def logout(req):
 def send_email(req):
     if ops.non:
         global email_,fname,absnumb
-        context = {'fname':fname, 'absnumb':absnumb}
+        context = {'fname':fname, 'absnumb':absnumb,'blank':ops._blank}
         html =  render_to_string(
         template_name="pages/email_window.html",
         context=context
