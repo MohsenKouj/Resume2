@@ -11,11 +11,29 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
+import random as r
 
+email_ = ""
+absnumb = ""
+fname = ""
 
+class ops:
+    non = False
+    _blank = False
 # Create your views here.
-def recovery_pass(req):
-    return render(req,'pages/reset_password.html')
+do = False
+def new_pass(req):
+    global do,fname,absnumb
+    if do:
+        return render(req,'pages/new_password.html')
+    else:
+        fname = "*"
+        absnumb = r.randint(100000,999999)
+        ops._blank = True
+        ops.non = True
+        return HttpResponseRedirect(reverse('accounts:send-email'))
+    
+
 def login(req):
     if not req.user.is_authenticated:
         if req.POST:                                                                 
@@ -35,12 +53,6 @@ def login(req):
 
         
 
-email_ = ""
-absnumb = ""
-fname = ""
-
-class ops:
-    non = False
 
 cap = sinupForm()
 def signup(req):
@@ -111,34 +123,39 @@ def enter_code_signup(req):
                 messages.add_message(req,messages.ERROR,"گذرواژه موقتی اشتباه میباشد")
                 return render(req,'pages/enterCode.html')
             if int(req.POST.get('code')) == absnumb:
-                absnumb = ''
-                ops.non = False
-                if cap.is_valid():
-                    User.objects.create_user(username=cap.cleaned_data['username'],password=cap.cleaned_data['password'],email=cap.cleaned_data['email']
-                                )
-                    users.objects.create(
-                        username=cap.cleaned_data['username'],
-                        password=User.objects.get(username=cap.cleaned_data['username']),
-                        email=cap.cleaned_data['email'],
-                        fname=cap.cleaned_data['fname'],
-                        lname=cap.cleaned_data['lname'],
-                        codeacc = ac.objects.get(id=2),
-                        tellNumber=cap.cleaned_data['tellnumber'],
-                        location=cap.cleaned_data['location'],
-                        birthday=cap.cleaned_data['birthday'],
-                        about=cap.cleaned_data['subject'],
-                        education=cap.cleaned_data['education'],
-                        langs=cap.cleaned_data['langs'],
-                        t_p=cap.cleaned_data['t_p'],
-                        cod_posti=cap.cleaned_data['cod_posti'],
-                        age=1
-                    )
-                    user = authenticate(request=req,username=cap.cleaned_data['username'], password=cap.cleaned_data['password']) 
-                    log(request=req,user=user)
-                    messages.add_message(req,messages.SUCCESS,f"{fname} جان خوش‌آمدید!")
-                    return HttpResponseRedirect(reverse('pixel:house'))
+                if ops._blank:
+                    absnumb = ''
+                    ops.non = False
+                    return HttpResponseRedirect(reverse("accounts:newpass"))
                 else:
-                    messages.add_message(request=req,level=messages.ERROR,message="خطا در مشخصات ورودی")
+                    absnumb = ''
+                    ops.non = False
+                    if cap.is_valid():
+                        User.objects.create_user(username=cap.cleaned_data['username'],password=cap.cleaned_data['password'],email=cap.cleaned_data['email']
+                                    )
+                        users.objects.create(
+                            username=cap.cleaned_data['username'],
+                            password=User.objects.get(username=cap.cleaned_data['username']),
+                            email=cap.cleaned_data['email'],
+                            fname=cap.cleaned_data['fname'],
+                            lname=cap.cleaned_data['lname'],
+                            codeacc = ac.objects.get(id=2),
+                            tellNumber=cap.cleaned_data['tellnumber'],
+                            location=cap.cleaned_data['location'],
+                            birthday=cap.cleaned_data['birthday'],
+                            about=cap.cleaned_data['subject'],
+                            education=cap.cleaned_data['education'],
+                            langs=cap.cleaned_data['langs'],
+                            t_p=cap.cleaned_data['t_p'],
+                            cod_posti=cap.cleaned_data['cod_posti'],
+                            age=1
+                        )
+                        user = authenticate(request=req,username=cap.cleaned_data['username'], password=cap.cleaned_data['password']) 
+                        log(request=req,user=user)
+                        messages.add_message(req,messages.SUCCESS,f"{fname} جان خوش‌آمدید!")
+                        return HttpResponseRedirect(reverse('pixel:house'))
+                    else:
+                        messages.add_message(request=req,level=messages.ERROR,message="خطا در مشخصات ورودی")
             else:
                 messages.add_message(req,messages.ERROR,"گذرواژه موقتی اشتباه میباشد")
         return render(req,'pages/enterCode.html')

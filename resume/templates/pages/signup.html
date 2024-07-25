@@ -28,7 +28,7 @@
             <div style="display: flex;width: inherit;height: inherit;" class="in">
                 <div>
                     <span style="color: red;font-size: 20px;">*</span><input type="username" style="direction: ltr;font-family: Verdana, Geneva, Tahoma, sans-serif;" placeholder="نام کاربری" class="important" required name="username" pattern="[A-Za-z0-9]{100}"><br>
-                    <span style="color: red;font-size: 20px;">*</span><input type="password" style="direction: ltr" placeholder="گذرواژه" class="important" required name="password"><br>
+                    <span style="color: red;font-size: 20px;">*</span><input type="password" style="direction: ltr" placeholder="گذرواژه" class="important" required name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ><br>
                     <span style="color: red;font-size: 20px;">*</span><input type="password" style="direction: ltr" placeholder="تکرار گذرواژه" class="important" required name="password2"><br>
                     <span style="color: red;font-size: 20px;">*</span><input type="text" placeholder="نام" class="important" required name="fname"><br>
                     <span style="color: red;font-size: 20px;">*</span><input type="text" placeholder="نام خانوادگی" class="important" required name="lname"><br>

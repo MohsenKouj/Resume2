@@ -25,7 +25,7 @@ urlpatterns = [
     path('logout/',views.logout,name='logout'),
     path('send-message-with-email/',views.send_email,name='send-email'),
     path('enter-code/',views.enter_code_signup,name='e-code'),
-    path('recovery-password/',views.recovery_pass,name='recovery'),
+    path('new-password/',views.new_pass,name='newpass'),
     path('captcha/', include('captcha.urls')),
 ]
 
