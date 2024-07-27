@@ -25,22 +25,25 @@ class ops:
 do = False
 sendmail = False
 def new_pass(req):
-    global do,fname,absnumb
+    global do,fname,absnumb,email_
     if do:
         ''
     else:
         fname = "*"
         absnumb = r.randint(100000,999999)
         if req.POST:
-            profill = req.POST.get('availible')
-            person = None
+            dops = dop()
+            person = False
             try:
-                if req.POST['comboBox'][0]:
+                if req.POST['comboBox'] == '1':
+                    profill = req.POST['availible']
                     person = User.objects.get(username=profill)
-                elif req.POST['comboBox'][1]:
-                    person = users.objects.get(fname=profill)
-                elif req.POST['comboBox'][2]:
-                    person = users.objects.get(lname=profill)
+                elif req.POST['comboBox'] == '2':
+                    profill = non_space(dops.Encode(req.POST.get('availible')))
+                    person = users.objects.get(code_name_f=profill)
+                elif req.POST['comboBox'] == '3':
+                    profill = non_space(dops.Encode(req.POST.get('availible')))
+                    person = users.objects.get(code_name_l=profill)
             except:
                 ''
             if person:
@@ -48,6 +51,7 @@ def new_pass(req):
                 fname='کاربر'
                 ops._blank = True
                 ops.non = True
+                absnumb = r.randint(100000,999999)
                 return HttpResponseRedirect(reverse('accounts:send-email'))
                 
             else:
