@@ -81,7 +81,8 @@ def login(req):
         if req.POST:                                                                 
             username = req.POST.get('username')
             password = req.POST.get('password')
-            user = authenticate(request=req,username=username, password=password) 
+            email = req.POST.get('email')
+            user = authenticate(request=req,username=username, password=password,email=email) 
             if user is not None:                              
                 log(request=req,user=user)                                              
                 messages.add_message(req,messages.SUCCESS,"خوش آمدید")                 
