@@ -21,13 +21,25 @@ fname = ""
 class ops:
     non = False
     _blank = False
+    tuser = False
 # Create your views here.
 do = False
 sendmail = False
 def new_pass(req):
     global do,fname,absnumb,email_
     if do:
-        ''
+        if req.POST:
+            if req.POST["password"] == req.POST["password2"]:
+                user = User.objects.get(username=ops.tuser)
+                suser = users.objects.get(username=ops.tuser)
+                user.delete()
+                User.objects.create_user(username=suser.username, password=req.POST["password"], email=suser.email)
+                suser.password = user.password
+                suser.save()
+                messages.add_message(req,messages.SUCCESS,"گذرواژه موقتی شما ارسال شد")
+                return HttpResponseRedirect(reverse('pixel:house'))
+                
+        return render(req,'pages/new_password.html',{'do':do})
     else:
         fname = "*"
         absnumb = r.randint(100000,999999)
@@ -51,15 +63,15 @@ def new_pass(req):
                 fname='کاربر'
                 ops._blank = True
                 ops.non = True
-                absnumb = r.randint(100000,999999)
+                ops.tuser = person
+                messages.add_message(req,messages.INFO,"گذرواژه موقتی شما ارسال شد")
                 return HttpResponseRedirect(reverse('accounts:send-email'))
                 
             else:
                 messages.add_message(req,messages.ERROR,"شخصی با این مشخصات یافت نشد")
                 
             
-        if sendmail:
-            return HttpResponseRedirect(reverse('accounts:send-email'))
+        
         
     return render(req,'pages/new_password.html',{'do':do})
     
@@ -99,9 +111,7 @@ def signup(req):
                 if password == cap.cleaned_data['password2']:
                     if cap.cleaned_data['tellnumber'].isdigit() and cap.cleaned_data['tellnumber'].__len__()  == 11:
                         ops.non = True
-                        email_ = cap.cleaned_data['email']
-                        import random as r
-                        absnumb = r.randint(100000,999999)
+                        email_ = cap.cleaned_data['email']                        
                         fname = req.POST['fname']
                         messages.add_message(req,messages.INFO,"ایمیل تایید شما ارسال شد")
                         ops._blank = False
@@ -127,6 +137,7 @@ def logout(req):
 def send_email(req):
     if ops.non:
         global email_,fname,absnumb
+        absnumb = r.randint(100000,999999)
         context = {'fname':fname, 'absnumb':absnumb,'blank':ops._blank}
         html =  render_to_string(
         template_name="pages/email_window.html",
@@ -151,7 +162,7 @@ def non_space(text:str):
             letters.append(l)
     return '%'.join(letters)
 def enter_code_signup(req):
-    global absnumb,cap
+    global absnumb,cap,do
     if ops.non:
         if req.POST:
             try:
@@ -163,17 +174,18 @@ def enter_code_signup(req):
                 if ops._blank:
                     absnumb = ''
                     ops.non = False
+                    do = True
                     return HttpResponseRedirect(reverse("accounts:newpass"))
                 else:
                     absnumb = ''
                     ops.non = False
                     if cap.is_valid():
                         dops =  dop()
-                        User.objects.create_user(username=cap.cleaned_data['username'],password=cap.cleaned_data['password'],email=cap.cleaned_data['email']
-                                    )
+                        User.objects.create_user(username=cap.cleaned_data['username'],password=cap.cleaned_data['password'],email=cap.cleaned_data['email'],
+                            )
                         users.objects.create(
                             username=cap.cleaned_data['username'],
-                            password=User.objects.get(username=cap.cleaned_data['username']),
+                            password=User.objects.get(username=cap.cleaned_data['username']).password,
                             email=cap.cleaned_data['email'],
                             fname=cap.cleaned_data['fname'],
                             lname=cap.cleaned_data['lname'],
