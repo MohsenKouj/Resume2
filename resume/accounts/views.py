@@ -79,16 +79,26 @@ def new_pass(req):
 def login(req):
     if not req.user.is_authenticated:
         if req.POST:                                                                 
-            username = req.POST.get('username')
+            
             password = req.POST.get('password')
-            email = req.POST.get('email')
-            user = authenticate(request=req,username=username, password=password,email=email) 
-            if user is not None:                              
-                log(request=req,user=user)                                              
-                messages.add_message(req,messages.SUCCESS,"خوش آمدید")                 
-                return HttpResponseRedirect('/')                                    
-            else:
-                messages.add_message(req,messages.ERROR,"مشخصات ورودی اشتباه است") 
+            if req.POST.get('enter-mode') == '1': 
+                username = req.POST.get('username')
+                user = authenticate(username=username, password=password)
+                if user is not None:                              
+                    log(request=req,user=user)                                              
+                    messages.add_message(req,messages.SUCCESS,"خوش آمدید")                 
+                    return HttpResponseRedirect('/')                                    
+                else:
+                    messages.add_message(req,messages.ERROR,"مشخصات ورودی اشتباه است") 
+            if req.POST.get('enter-mode') == '2':
+                email = req.POST.get('email')
+                user = authenticate(email=email, password=password)
+                if user is not None:                              
+                    log(request=req,user=user)                                              
+                    messages.add_message(req,messages.SUCCESS,"خوش آمدید")                 
+                    return HttpResponseRedirect('/')                                    
+                else:
+                    messages.add_message(req,messages.ERROR,"مشخصات ورودی اشتباه است") 
         return render(req,'pages/login.html')
            
     else:

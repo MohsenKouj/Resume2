@@ -48,17 +48,22 @@
           <span class="login100-form-title" style="font-family: vazir;">
             ورود به حساب کاربری
           </span>
-          <div class="wrap-input100 validate-input" style="font-family: m;"
+          <div style="text-align:right;padding: 0 20px;margin-bottom: 10px;">
+          <p style="font-family: vazir;font-size: 20px;">ورود با</p>
+          <span style="font-family: vazir;font-size: 16px;" >نام کاربری <input type="radio" name="enter-mode" onclick="check()" value="1" checked id="ur"></span>
+          <span style="float:left;font-family: vazir;font-size: 16px;" >ایمیل <input type="radio" onclick="check()" name="enter-mode" value="2" id="er"></span>
+          </div>
+          <div class="wrap-input100 validate-input" style="font-family: m;" id="uname"
             data-validate="ایمیل را وارد کنید: ex@abc.xyz">
-            <input class="input100" type="text" name="username" style="font-family: m;" placeholder="نام کاربری">
+            <input class="input100" type="text" name="username" style="font-family: m;" placeholder="نام کاربری" >
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
             </span>
           </div>
-          <div class="wrap-input100 validate-input" style="font-family: m;"
-            data-validate="ایمیل را وارد کنید: ex@abc.xyz">
-            <input class="input100" type="email" name="email" style="font-family: m;" placeholder="نام کاربری">
+          <div class="wrap-input100 validate-input" style="font-family: m;display: none;"
+            data-validate="ایمیل را وارد کنید: ex@abc.xyz" id="email">
+            <input class="input100" type="email" name="email" style="font-family: m;" placeholder="ایمیل" value="example@gmail.com">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -111,6 +116,17 @@
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
   <script>
+    let user_radio=document.getElementById("ur")
+    let email_radio=document.getElementById("er")
+    function check(){
+    if(user_radio.checked) {
+      document.getElementById("uname").style.display="block"
+      document.getElementById("email").style.display="none"
+    }
+    else if(email_radio.checked) {
+      document.getElementById("uname").style.display="none"
+      document.getElementById("email").style.display="block"
+    }}
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
