@@ -89,8 +89,11 @@ def login(req):
                     messages.add_message(req,messages.ERROR,"مشخصات ورودی اشتباه است") 
             if req.POST.get('enter-mode') == '2':
                 email = req.POST.get('email')
-                user = User.objects.get(email=email)
-                user = authenticate(username=user.username,password=req.POST.get('password')) 
+                try:
+                    user = User.objects.get(email=email)
+                    user = authenticate(username=user.username,password=req.POST.get('password')) 
+                except:
+                    user=None
                 if user is not None:                              
                     log(request=req,user=user)                                              
                     messages.add_message(req,messages.SUCCESS,"خوش آمدید")                 

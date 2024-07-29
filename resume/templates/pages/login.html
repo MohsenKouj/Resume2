@@ -53,17 +53,15 @@
           <span style="font-family: vazir;font-size: 16px;" >نام کاربری <input type="radio" name="enter-mode" onclick="check()" value="1" checked id="ur"></span>
           <span style="float:left;font-family: vazir;font-size: 16px;" >ایمیل <input type="radio" onclick="check()" name="enter-mode" value="2" id="er"></span>
           </div>
-          <div class="wrap-input100 validate-input" style="font-family: m;" id="uname"
-            data-validate="ایمیل را وارد کنید: ex@abc.xyz">
-            <input class="input100" type="text" name="username" style="font-family: m;" placeholder="نام کاربری" >
+          <div class="wrap-input100" style="font-family: m;" id="uname">
+            <input class="input100" type="text" name="username" id="euname"style="font-family: Verdana, Geneva, Tahoma, sans-serif;" placeholder="نام کاربری">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
             </span>
           </div>
-          <div class="wrap-input100 validate-input" style="font-family: m;display: none;"
-            data-validate="ایمیل را وارد کنید: ex@abc.xyz" id="email">
-            <input class="input100" type="email" name="email" style="font-family: m;" placeholder="ایمیل" value="example@gmail.com">
+          <div class="wrap-input100" style="font-family: m;display: none;" id="email">
+            <input class="input100" type="email" name="email" id="eimail" style="font-family: Verdana, Geneva, Tahoma, sans-serif;" placeholder="ایمیل">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -121,10 +119,14 @@
     function check(){
     if(user_radio.checked) {
       document.getElementById("uname").style.display="block"
+      document.getElementById("euname").required = true
+      document.getElementById("eimail").required = false
       document.getElementById("email").style.display="none"
     }
     else if(email_radio.checked) {
       document.getElementById("uname").style.display="none"
+      document.getElementById("eimail").required = true
+      document.getElementById("euname").required = false
       document.getElementById("email").style.display="block"
     }}
     window.dataLayer = window.dataLayer || [];
