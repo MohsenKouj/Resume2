@@ -46,18 +46,16 @@ def new_pass(req):
         if req.POST:
             dops = dop()
             person = False
-            try:
-                if req.POST['comboBox'] == '1':
-                    profill = req.POST['availible']
-                    person = User.objects.get(username=profill)
-                elif req.POST['comboBox'] == '2':
-                    profill = non_space(dops.Encode(req.POST.get('availible')))
-                    person = users.objects.get(code_name_f=profill)
-                elif req.POST['comboBox'] == '3':
-                    profill = non_space(dops.Encode(req.POST.get('availible')))
-                    person = users.objects.get(code_name_l=profill)
-            except:
-                ''
+            #try:
+            if req.POST['comboBox'] == '1':
+                profill = req.POST['available']
+                person = User.objects.get(username=profill)
+            elif req.POST['comboBox'] == '2':
+                profill = req.POST['available']
+                person = users.objects.get(tellNumber=profill)
+            #except:
+             
+             #   ''
             if person:
                 email_ = person.email
                 fname='کاربر'
@@ -92,7 +90,8 @@ def login(req):
                     messages.add_message(req,messages.ERROR,"مشخصات ورودی اشتباه است") 
             if req.POST.get('enter-mode') == '2':
                 email = req.POST.get('email')
-                user = authenticate(email=email, password=password)
+                user = User.objects.get(email=email)
+                user = authenticate(username=user.username,password=req.POST.get('password')) 
                 if user is not None:                              
                     log(request=req,user=user)                                              
                     messages.add_message(req,messages.SUCCESS,"خوش آمدید")                 
