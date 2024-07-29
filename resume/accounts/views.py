@@ -37,8 +37,9 @@ def new_pass(req):
                 suser.password = user.password
                 suser.save()
                 messages.add_message(req,messages.SUCCESS,"گذرواژه موقتی شما ارسال شد")
+                do = False
                 return HttpResponseRedirect(reverse('pixel:house'))
-        do = False
+        
                 
         return render(req,'pages/new_password.html',{'do':do})
     else:
