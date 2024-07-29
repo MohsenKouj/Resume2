@@ -38,19 +38,17 @@ def new_pass(req):
                 suser.save()
                 messages.add_message(req,messages.SUCCESS,"گذرواژه موقتی شما ارسال شد")
                 return HttpResponseRedirect(reverse('pixel:house'))
+        do = False
                 
         return render(req,'pages/new_password.html',{'do':do})
     else:
-        fname = "*"
-        absnumb = r.randint(100000,999999)
         if req.POST:
-            dops = dop()
             person = False
             #try:
-            if req.POST['comboBox'] == '1':
+            if int(req.POST['att']) == 1:
                 profill = req.POST['available']
                 person = User.objects.get(username=profill)
-            elif req.POST['comboBox'] == '2':
+            elif int(req.POST['att']) == 2:
                 profill = req.POST['available']
                 person = users.objects.get(tellNumber=profill)
             #except:

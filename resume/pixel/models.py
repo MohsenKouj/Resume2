@@ -17,7 +17,7 @@ class users(models.Model):
     codeacc=models.ForeignKey(Accounts,on_delete=models.CASCADE)
     fname=models.CharField(max_length=255,null=True)
     lname=models.CharField(max_length=255,null=True)
-    tellNumber=models.CharField(max_length=255)
+    tellNumber=models.CharField(max_length=255,unique=True)
     email=models.EmailField(max_length=255)
     location=models.TextField(max_length=500,null=True)
     age=models.IntegerField()
