@@ -11,7 +11,6 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
-from PersianEncode import DictOvPer as dop
 import random as r
 
 email_ = ""
@@ -192,7 +191,6 @@ def enter_code_signup(req):
                     absnumb = ''
                     ops.non = False
                     if cap.is_valid():
-                        dops =  dop()
                         User.objects.create_user(username=cap.cleaned_data['username'],password=cap.cleaned_data['password'],email=cap.cleaned_data['email'],
                             )
                         users.objects.create(
@@ -210,8 +208,8 @@ def enter_code_signup(req):
                             langs=cap.cleaned_data['langs'],
                             t_p=cap.cleaned_data['t_p'],
                             cod_posti=cap.cleaned_data['cod_posti'],
-                            code_name_f = non_space(dops.Encode(cap.cleaned_data['fname'])),
-                            code_name_l = non_space(dops.Encode(cap.cleaned_data['lname'])),
+                            code_name_f = '',
+                            code_name_l = '',
                             age=1
                         )
                         user = authenticate(request=req,username=cap.cleaned_data['username'], password=cap.cleaned_data['password']) 
